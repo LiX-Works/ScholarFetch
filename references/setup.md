@@ -17,9 +17,9 @@ literature-workflow doctor --mode all
 
 ## 安装为 Agent Skill
 
-将本仓库的完整目录放入 Agent 支持的技能目录，文件夹名称为 `literature-search-download`。保留 `SKILL.md`、`scripts/`、`src/`、`references/` 和许可文件。
+将本仓库的完整目录放入 Agent 支持的技能目录，文件夹名称为 `scholarfetch`。保留 `SKILL.md`、`scripts/`、`src/`、`references/` 和许可文件。
 
-Codex 的常用目录为 `~/.codex/skills/literature-search-download/`。如果配置了自定义技能目录，以实际配置为准。在 Skill 根目录安装 Python 依赖后，通过 `$literature-search-download` 调用。安装 Python 包与放置 Skill 是两个步骤；只安装包不会自动注册 Agent Skill 或 MCP。
+Codex 的常用目录为 `~/.codex/skills/scholarfetch/`。如果配置了自定义技能目录，以实际配置为准。在 Skill 根目录安装 Python 依赖后，通过 `$scholarfetch` 调用。安装 Python 包与放置 Skill 是两个步骤；只安装包不会自动注册 Agent Skill 或 MCP。
 
 ## 数据源配置
 

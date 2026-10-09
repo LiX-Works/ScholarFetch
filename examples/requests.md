@@ -5,7 +5,7 @@
 ## 主题检索
 
 ```text
-使用 $literature-search-download，查找 2022—2026 年二维半导体中激子输运的研究。
+使用 $scholarfetch，查找 2022—2026 年二维半导体中激子输运的研究。
 先给我 10 篇候选，包含预印本，但明确区分预印本与正式发表版本。
 说明实际检索了哪些来源、哪些请求失败，以及核验了哪些字段。
 ```
@@ -23,7 +23,7 @@ literature-workflow search "Sharing Detailed Research Data" --sources crossref -
 ## 核验已有引用
 
 ```text
-使用 $literature-search-download，核对我粘贴的参考文献列表。
+使用 $scholarfetch，核对我粘贴的参考文献列表。
 检查 DOI、题名、首位作者和年份，保留原输入。
 把一致、存在冲突和无法确定的项目分开，不要补造缺失字段。
 ```
@@ -33,7 +33,7 @@ literature-workflow search "Sharing Detailed Research Data" --sources crossref -
 ## 下载指定论文
 
 ```text
-使用 $literature-search-download，下载我提供的 DOI 或官方出版社链接对应的 PDF。
+使用 $scholarfetch，下载我提供的 DOI 或官方出版社链接对应的 PDF。
 仅保留通过来源与身份检查的文件，输出目录用本项目的 official_papers。
 无法获取的项目继续保留 DOI、失败原因和下一步建议。
 ```
@@ -43,7 +43,7 @@ literature-workflow search "Sharing Detailed Research Data" --sources crossref -
 ## 检索后下载
 
 ```text
-使用 $literature-search-download，查找近五年的室温二维材料光探测研究，
+使用 $scholarfetch，查找近五年的室温二维材料光探测研究，
 核验前 5 篇候选并尝试下载官方 PDF。
 一次完成这些步骤，报告每篇文献的核验状态、文件状态和缺口。
 ```
@@ -53,7 +53,7 @@ literature-workflow search "Sharing Detailed Research Data" --sources crossref -
 ## 导出引用交换文件
 
 ```text
-使用 $literature-search-download，把本次已核验的论文导出为 RIS 和 BibTeX。
+使用 $scholarfetch，把本次已核验的论文导出为 RIS 和 BibTeX。
 列出未导出的记录和原因，保留来源记录供我复核。
 ```
 
@@ -62,7 +62,7 @@ literature-workflow search "Sharing Detailed Research Data" --sources crossref -
 ## 依赖不全时
 
 ```text
-使用 $literature-search-download，先检查当前环境。
+使用 $scholarfetch，先检查当前环境。
 告诉我缺少哪个依赖、影响哪一步、最少需要准备什么；继续完成当前能运行的步骤。
 ```
 

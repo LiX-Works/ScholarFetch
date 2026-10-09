@@ -1,5 +1,5 @@
 ---
-name: literature-search-download
+name: scholarfetch
 description: >-
   Search scholarly literature, resolve paper identifiers, verify bibliographic
   metadata, download and check PDFs from official publisher sources, and export
@@ -8,7 +8,9 @@ description: >-
   citations or decide which papers support manuscript claims.
 ---
 
-# Literature Search and Download
+# ScholarFetch
+
+**Academic Literature Search & PDF Download**
 
 统一处理主题检索、已有文献核验、官方 PDF 下载与候选引用导出。使用者提供主题、DOI、题名、引用或列表；根据请求运行必要阶段，无需强制准备 CSV 或拆成多轮任务。
 

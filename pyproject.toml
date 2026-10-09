@@ -3,7 +3,7 @@ requires = ["setuptools>=77"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "literature-search-download"
+name = "scholarfetch"
 version = "0.1.0"
 description = "Search scholarly sources, verify paper metadata, and collect checked PDFs from official publishers."
 readme = "README.md"
@@ -20,7 +20,7 @@ browser = ["cloakbrowser>=0.4.10,<0.5"]
 literature-workflow = "literature_workflow.cli:main"
 
 [project.urls]
-Repository = "https://github.com/LiX-Works/literature-search-download"
+Repository = "https://github.com/LiX-Works/ScholarFetch"
 
 [tool.setuptools.packages.find]
 where = ["src"]

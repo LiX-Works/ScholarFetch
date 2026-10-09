@@ -1,6 +1,6 @@
 interface:
-  display_name: "文献检索与下载"
+  display_name: "ScholarFetch"
   short_description: "检索学术论文、核验文献信息并下载官方 PDF，保留来源记录与待处理清单"
-  default_prompt: "使用 $literature-search-download 处理我的文献检索、核验或官方 PDF 下载需求。"
+  default_prompt: "使用 $scholarfetch 处理我的文献检索、核验或官方 PDF 下载需求。"
 policy:
   allow_implicit_invocation: true

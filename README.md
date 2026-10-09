@@ -1,90 +1,88 @@
-# 文献检索与官方 PDF 下载
+# ScholarFetch
 
-将查找论文、核对文献信息和获取官方 PDF 整合为一次任务，并留下可检查的结果与失败记录。这个 Skill 为 Agent（AI 助手）提供操作流程和配套命令。
+**Academic Literature Search & PDF Download**
 
-适用于研究人员、学生，以及需要整理学术材料的使用者。你可以提供研究主题、DOI（论文标识符）、题名、官方出版社链接或文献列表；Agent 根据需求运行必要步骤，返回候选论文、核验结果、通过检查的 PDF 和待人工处理的项目。
+**English** | [简体中文](README.zh-CN.md)
 
-## 能做什么
+ScholarFetch combines paper discovery, bibliographic verification, and official publisher PDF acquisition in one task, with traceable results and failure records. It provides an AI assistant with a focused workflow and supporting commands.
 
-| 你的需求 | 工作方式 | 主要结果 |
+For researchers, students, and anyone organizing academic literature. Provide a topic, DOI (paper identifier), title, official publisher link, or paper list; receive candidate papers, verification results, checked PDFs, and items that need manual attention.
+
+## What it does
+
+| Your task | Workflow | Main output |
 |---|---|---|
-| 按主题找论文 | 选择来源、检索、合并重复记录 | 候选列表与来源记录 |
-| 核对已有文献 | 回查标识符，比较题名、作者、年份等信息 | 匹配结果、冲突与缺失字段 |
-| 下载指定论文 | 查找官方页面与 PDF，检查来源和文件身份 | 官方 PDF 与待处理记录 |
-| 找论文并下载 | 连续完成检索、核验和下载 | 文献记录与文件的对应关系 |
-| 导出文献列表 | 按核验状态导出 RIS 或 BibTeX | 供后续文献管理使用的文件 |
+| Find papers on a topic | Select sources, search, and deduplicate | Candidates and source records |
+| Check existing references | Resolve identifiers and compare titles, authors, years, and other fields | Matches, conflicts, and missing fields |
+| Download specific papers | Locate official pages and PDFs; check provenance and identity | Checked official PDFs and unresolved items |
+| Search and download | Run discovery, verification, and acquisition together | Linked paper records and files |
+| Export references | Export eligible verified records as RIS or BibTeX | Files for subsequent reference management |
 
-检索结果是候选文献。书目信息匹配、PDF 身份通过检查，以及论文是否支持某个论点，是不同判断；正式选用哪些引用仍由使用者决定。本 Skill 不自动导入 Zotero 或修改 Word 引用。
+Search results are candidates. Matching metadata, confirming PDF identity, and deciding whether a paper supports a claim are separate judgments. Citation selection remains with the user; ScholarFetch does not automatically import into Zotero or edit Word citations.
 
-## 准备依赖
+## Dependencies
 
-| 依赖 | 用途 | 是否必须 | 用户准备 | 缺失影响 |
+| Dependency | Purpose | Required? | What to prepare | If missing |
 |---|---|---|---|---|
-| Python ≥ 3.11 | 运行命令 | 必须 | 安装 Python，建议使用独立虚拟环境 | 所有脚本无法运行 |
-| requests ≥ 2.31、< 3 | 数据库请求与 HTTP 下载 | 基础安装必须 | 在仓库根目录运行 `python -m pip install .` | 检索、核验与直接下载不可用 |
-| pypdf ≥ 6、< 7 | 读取 PDF、检查页数与身份 | 基础安装必须 | 同上，自动随基础依赖安装 | PDF 不能完成验收 |
-| cloakbrowser ≥ 0.4.10、< 0.5 及其浏览器二进制 | 处理需要浏览器访问的官方页面 | 可选 | 安装 `.[browser]`，按官方方式准备本地二进制 | 浏览器获取不可用，其他步骤可继续 |
-| 数据源配置与网络 | 访问选定数据库和出版社 | 按来源需要 | PubMed 配置 `PUBMED_EMAIL`；其他邮件或 API key 按诊断提示配置 | 受影响来源会失败或受限，其余结果保留 |
-| 出版社访问权限 | 获取受访问限制的论文 | 按论文需要 | 使用自己已有的合法访问权限；必要时在本次可见浏览器中手动登录 | 对应论文列入待处理记录 |
+| Python ≥ 3.11 | Run the commands | Yes | Install Python; a separate virtual environment is recommended | Scripts cannot run |
+| requests ≥ 2.31, < 3 | Database requests and HTTP downloads | Base installation | Run `python -m pip install .` from the repository root | Search, verification, and direct downloads are unavailable |
+| pypdf ≥ 6, < 7 | Read PDFs and check pages and identity | Base installation | Installed with the base dependencies | PDFs cannot pass validation |
+| cloakbrowser ≥ 0.4.10, < 0.5 and its browser binary | Access official pages requiring a browser | Optional | Install `.[browser]`; prepare the binary using the official instructions | Browser acquisition is unavailable; other stages can continue |
+| Source configuration and network access | Reach selected databases and publishers | Depends on source | Set `PUBMED_EMAIL` for PubMed; follow diagnostic guidance for other email or API key settings | Affected sources fail or are limited; other results are retained |
+| Publisher access rights | Obtain restricted papers | Depends on paper | Use your existing authorized access; log in manually in the current visible browser if needed | The paper remains in the manual-action list |
 
-不需要 MCP、外部 LLM 或付费中转。项目不附带账号、Cookie、浏览器 profile 或浏览器二进制。更详细的准备方式见 [安装与依赖](references/setup.md)。
+No MCP server, external language model, or paid relay is required. Accounts, cookies, browser profiles, and browser binaries are not bundled. See [setup and dependencies](references/setup.md).
 
-## 开始使用
+## Getting started
 
-下载本仓库，在仓库根目录安装并检查环境：
+Download the repository, then install and check dependencies from its root:
 
 ```bash
 python -m pip install .
 literature-workflow doctor --mode all
 ```
 
-需要浏览器获取功能时，另行安装可选依赖：
+For optional browser acquisition, also run `python -m pip install ".[browser]"`.
 
-```bash
-python -m pip install ".[browser]"
-```
-
-将本仓库目录作为 `literature-search-download` Skill 放入 Agent 的技能目录。Codex 的常用位置是 `~/.codex/skills/literature-search-download/`；安装细节见 [setup.md](references/setup.md)。
-
-安装后，直接告诉 Agent：
+Place the repository in your assistant's skill directory as `scholarfetch`. For Codex, the usual location is `~/.codex/skills/scholarfetch/`; see [setup.md](references/setup.md). Then ask:
 
 ```text
-使用 $literature-search-download，查找二维材料中激子的近年研究，
-说明检索来源和范围，核对候选论文，并尝试下载其官方 PDF。
+Use $scholarfetch to find recent research on excitons in two-dimensional materials.
+Report the sources and search scope, verify the candidates, and try to download their official PDFs.
 ```
 
-可以指定年份、文献数量、是否包含预印本和输出目录。无需先把输入整理成固定 CSV；文件输入可用 JSON、CSV 或文本，RIS/BibTeX 输入当前仅支持其中含 DOI 的记录，无 DOI 的 RIS/BibTeX 文件会被拒绝。普通题名或引用请作为文本提供，由保守解析流程处理。更多请求见 [使用示例](examples/requests.md)。Agent 发现依赖不全时应说明缺少什么、影响哪一步和最少需要准备什么，并继续可运行的阶段。
+You can specify dates, result counts, preprint preferences, and the output directory. File inputs support JSON, CSV, and text. RIS/BibTeX input currently extracts DOI-bearing records only; files without DOIs are rejected. Supply ordinary titles or citations as text for conservative identity resolution. See [request examples](examples/requests.md). When a dependency is missing, the assistant should name it, explain the affected stage and minimum preparation, and continue stages that remain available.
 
-也可以直接运行命令：
+You can also use the CLI directly:
 
 ```bash
-literature-workflow search "exciton transport two dimensional materials" --sources crossref,europe_pmc --rows 3 --language zh --output runs/search
-literature-workflow verify --doi "10.1371/journal.pone.0000308" --language zh --output runs/verify
-literature-workflow download --input papers.txt --no-browser --language zh --output runs/download
-literature-workflow search-download "exciton transport two dimensional materials" --rows 3 --no-browser --language zh --output runs/search-download
-literature-workflow export --input runs/search-download/records.json --format ris --language zh --output runs/export
+literature-workflow search "exciton transport two dimensional materials" --sources crossref,europe_pmc --rows 3 --language en --output runs/search
+literature-workflow verify --doi "10.1371/journal.pone.0000308" --language en --output runs/verify
+literature-workflow download --input papers.txt --no-browser --language en --output runs/download
+literature-workflow search-download "exciton transport two dimensional materials" --rows 3 --no-browser --language en --output runs/search-download
+literature-workflow export --input runs/search-download/records.json --format ris --language en --output runs/export
 ```
 
-示例 DOI 对应 2007 年的 *Sharing Detailed Research Data Is Associated with Increased Citation Rate*，已完成元数据回查；这不承诺以后每次运行都可下载。每次选择新的或空的输出目录，已有结果不会覆盖。单独 DOI 回查不等于核对原引用，核验原引用时可用 `--expected-title`、`--expected-year` 提供预期字段。源仓库内也可使用 `python scripts/literature.py` 运行相同命令；完整参数以 `--help` 为准。
+The example DOI identifies *Sharing Detailed Research Data Is Associated with Increased Citation Rate* (2007), whose metadata has been checked. Future availability is not guaranteed. Use a new or empty output directory for each run; existing results are not overwritten. A DOI lookup alone does not verify an original reference: use `--expected-title` and `--expected-year` to compare supplied fields. From the source checkout, `python scripts/literature.py` accepts the same commands. See `--help` for full options.
 
-## 来源与结果
+## Sources, outputs, and limits
 
-已接入的论文来源为 Crossref、PubMed、arXiv、OpenAlex、Europe PMC 和 Semantic Scholar。默认查询 Crossref 与 Europe PMC；Agent 按主题与可用配置选择来源，每次报告实际查询、失败和范围限制。
+Implemented paper sources are Crossref, PubMed, arXiv, OpenAlex, Europe PMC, and Semantic Scholar. The default is Crossref and Europe PMC. The assistant selects sources according to the task and available configuration, and reports actual queries, failures, and coverage limits.
 
-正常完成的业务任务生成 `run.json`、`records.json` 和 `report.md`。下载还生成 `download_manifest.json`，通过检查的 PDF 放入 `papers/`；未获取或身份不确定的项目保留在 JSON 和报告中。导出产生 `references.ris` 或 `references.bib`。字段与状态见 [工作流契约](references/workflow-contract.md)。
+Completed workflow runs produce `run.json`, `records.json`, and `report.md`. Downloads also produce `download_manifest.json`; accepted PDFs go into `papers/`. Unavailable or uncertain items remain in the JSON and report. Exports produce `references.ris` or `references.bib`. See the [workflow contract](references/workflow-contract.md) for fields and statuses.
 
-这是有数量边界的检索流程，不保证穷尽数据库。自动 PDF 获取仅限可核实的官方出版社来源，不回退到仓储或第三方副本；页面变化、访问限制和身份证据不足都可能需要人工处理。浏览器每次使用新的独立 profile；`--profile-root` 只指定其容器目录，不复用既有登录或 Cookie。`doctor` 检查本地依赖与部分配置，不证明浏览器二进制、网络或出版社访问已可用；具体可用性以实际运行结果为准。
+Searches are bounded and do not guarantee exhaustive coverage. Automated acquisition accepts verifiable official publisher sources only, with no fallback to repository or third-party copies. Page changes, access restrictions, or insufficient identity evidence may require manual action. Each browser session uses a new isolated profile; `--profile-root` specifies its parent directory and does not reuse existing logins or cookies. `doctor` checks local dependencies and some configuration, not connectivity, browser binary availability, or publisher access. Credentials and profiles stay local and must not be published with run outputs.
 
-## 已验证的范围
+## Verified scope
 
-65 项离线测试已通过，覆盖来源异常、标识符与版本冲突、PDF 身份检查、禁止覆盖和敏感信息处理。安装包已在独立环境安装并验证命令入口。
+65 offline tests passed, covering source errors, identifier and version conflicts, PDF identity checks, overwrite protection, and sensitive-information handling. Package installation and the command entry point were also checked in an isolated environment.
 
-在 Python 3.12、requests 2.34.2、pypdf 6.20.0 的隔离环境中，已完成 Crossref 与 Europe PMC 的真实主题检索（每源 2 条，共 4 条记录）、示例 PLOS DOI 的独立元数据核验，以及官方 HTTP PDF 下载的页数和身份检查。单候选的检索→核验→下载链路取得 1 份验收通过的 PDF，RIS 导出得到 1 条记录。
+Live checks used Python 3.12, requests 2.34.2, and pypdf 6.20.0: Crossref and Europe PMC topic searches returned 2 records per source (4 total); the example PLOS DOI passed independent metadata verification and official HTTP PDF page and identity checks. A single-candidate search → verification → download run produced 1 accepted PDF, and RIS export produced 1 record.
 
-负例验证确认题名或年份冲突的记录不进入引用导出，RIS/BibTeX 中的签名 URL 参数与邮件信息经过脱敏，遗漏记录保留输入关联和原因。浏览器备用获取路径尚未完成真实回归；PubMed、arXiv、OpenAlex 和 Semantic Scholar 尚未完成本版本联网回归。上述验证不代表所有来源、平台或出版社均可用。
+Negative checks excluded title or year conflicts from export, removed signed URL parameters and email information from RIS/BibTeX, and retained input links and omission reasons. Browser fallback has not had a live regression test. PubMed, arXiv, OpenAlex, and Semantic Scholar have not had live regression tests for this version. These checks do not establish universal source or publisher support.
 
-## 来源与许可
+## Attribution and license
 
-本项目整合 [nature-academic-search](https://github.com/wp-a/nature-academic-search) 的检索与核验代码、[K-Dense Scientific Agent Skills](https://github.com/K-Dense-AI/scientific-agent-skills) 中 `paper-lookup` 的数据源操作知识，以及官方 PDF 下载流程。本项目新增统一命令入口、阶段衔接、依赖诊断与可追踪输出。上游知识覆盖不代表所有数据源都已接入。
+ScholarFetch integrates discovery and verification code from [nature-academic-search](https://github.com/wp-a/nature-academic-search), source-operation knowledge from `paper-lookup` in [K-Dense Scientific Agent Skills](https://github.com/K-Dense-AI/scientific-agent-skills), and an official PDF acquisition workflow. This project adds a unified command interface, stage handoffs, dependency diagnostics, and traceable outputs. Upstream knowledge coverage does not imply that every upstream database is implemented.
 
-本项目新代码按 [MIT](LICENSE) 许可发布；上游代码与运行依赖保留各自许可。贡献归属与保留的许可文本见 [第三方记录](THIRD_PARTY_NOTICES.md)。
+New project code is released under [MIT](LICENSE). Upstream code and runtime dependencies retain their own licenses. See [third-party notices](THIRD_PARTY_NOTICES.md) for contributions and preserved license texts.
