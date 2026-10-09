@@ -1,0 +1,69 @@
+# 使用示例
+
+以下是可直接交给 Agent 的请求。示例说明任务范围，不是已经执行过的研究结果。
+
+## 主题检索
+
+```text
+使用 $literature-search-download，查找 2022—2026 年二维半导体中激子输运的研究。
+先给我 10 篇候选，包含预印本，但明确区分预印本与正式发表版本。
+说明实际检索了哪些来源、哪些请求失败，以及核验了哪些字段。
+```
+
+Agent 将中文主题整理成适合数据库的英文关键词，再选择可用来源。文献数量是目标规模，不表示数据库已被穷尽。
+
+直接使用 CLI 时可显式设置日期、作者和文献类型。例如：
+
+```bash
+literature-workflow search "Sharing Detailed Research Data" --sources crossref --rows 3 --date-from 2007-01-01 --date-to 2007-12-31 --author Piwowar --document-type journal-article --language zh --output runs/filtered-search
+```
+
+日期采用 `YYYY-MM-DD`；`--document-type` 可重复传入。相同过滤选项也适用于 `search-download`。命令记录请求条件；具体执行范围取决于来源支持，不将参数存在当成过滤成功证明。
+
+## 核验已有引用
+
+```text
+使用 $literature-search-download，核对我粘贴的参考文献列表。
+检查 DOI、题名、首位作者和年份，保留原输入。
+把一致、存在冲突和无法确定的项目分开，不要补造缺失字段。
+```
+
+单独提供 DOI 可以核对它是否解析到一条记录；若要判断原引用是否正确，也请提供预期题名、作者或年份作为比较依据。
+
+## 下载指定论文
+
+```text
+使用 $literature-search-download，下载我提供的 DOI 或官方出版社链接对应的 PDF。
+仅保留通过来源与身份检查的文件，输出目录用本项目的 official_papers。
+无法获取的项目继续保留 DOI、失败原因和下一步建议。
+```
+
+无需先进行主题检索。下载成功与否取决于出版社页面、文件可读性和当前访问权限；访问受限的项目会留下待处理记录。
+
+## 检索后下载
+
+```text
+使用 $literature-search-download，查找近五年的室温二维材料光探测研究，
+核验前 5 篇候选并尝试下载官方 PDF。
+一次完成这些步骤，报告每篇文献的核验状态、文件状态和缺口。
+```
+
+检索中发现的预印本可作为候选记录保留；自动 PDF 下载阶段仍按官方出版社来源规则执行。
+
+## 导出引用交换文件
+
+```text
+使用 $literature-search-download，把本次已核验的论文导出为 RIS 和 BibTeX。
+列出未导出的记录和原因，保留来源记录供我复核。
+```
+
+导出文件用于后续文献管理。Skill 不自动导入 Zotero，也不插入或刷新 Word 引用字段。
+
+## 依赖不全时
+
+```text
+使用 $literature-search-download，先检查当前环境。
+告诉我缺少哪个依赖、影响哪一步、最少需要准备什么；继续完成当前能运行的步骤。
+```
+
+例如缺少可选浏览器组件时，仍可检索、核验并尝试直接 HTTP 下载；浏览器获取阶段需在组件准备后才能执行。

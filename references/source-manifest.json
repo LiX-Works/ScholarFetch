@@ -1,0 +1,229 @@
+{
+  "schema_version": 1,
+  "release_version": "0.1.0",
+  "vendored_files": [
+    {
+      "path": "src/literature_workflow/_vendor/nature_academic_search/__init__.py",
+      "upstream_path": "src/nature_academic_search/__init__.py",
+      "upstream_repository": "https://github.com/wp-a/nature-academic-search",
+      "upstream_commit": "9e4496ff7fd52ee91fde84bf944d7f5ff6085315",
+      "license": "MIT",
+      "change": "adapted",
+      "upstream_sha256": "d935e4b0feffb40301af354eaeb46e4bc60b5b4bcba39b79916418c8fa935f92",
+      "release_sha256": "2cf69de43efdf1763c954caa0573eb67d547074839366bbb329aa52fe6d4364d"
+    },
+    {
+      "path": "src/literature_workflow/_vendor/nature_academic_search/config.py",
+      "upstream_path": "src/nature_academic_search/config.py",
+      "upstream_repository": "https://github.com/wp-a/nature-academic-search",
+      "upstream_commit": "9e4496ff7fd52ee91fde84bf944d7f5ff6085315",
+      "license": "MIT",
+      "change": "adapted",
+      "upstream_sha256": "f979ccc06163e94fc0aa9fae4b6818422fa74991adc6c27a29bdbf14c174bef6",
+      "release_sha256": "f2b59c75d6f57874178e5fd0dadd9be3c8ba3d6ad52a060f9363c0035e68951f"
+    },
+    {
+      "path": "src/literature_workflow/_vendor/nature_academic_search/discovery.py",
+      "upstream_path": "src/nature_academic_search/discovery.py",
+      "upstream_repository": "https://github.com/wp-a/nature-academic-search",
+      "upstream_commit": "9e4496ff7fd52ee91fde84bf944d7f5ff6085315",
+      "license": "MIT",
+      "change": "adapted",
+      "upstream_sha256": "f90e93122990abfb06e0363f5301bdc86b58bbb9190215b27f4ec4ab179ebd71",
+      "release_sha256": "63b6c25a8945c9ba76cdabca08b3b571404307bd719276eb5a865859eba8ee32"
+    },
+    {
+      "path": "src/literature_workflow/_vendor/nature_academic_search/errors.py",
+      "upstream_path": "src/nature_academic_search/errors.py",
+      "upstream_repository": "https://github.com/wp-a/nature-academic-search",
+      "upstream_commit": "9e4496ff7fd52ee91fde84bf944d7f5ff6085315",
+      "license": "MIT",
+      "change": "adapted",
+      "upstream_sha256": "e232e5d477472536639acfd05fada5a815f955a6ecd3d31263aec60a16969867",
+      "release_sha256": "24b3bc7b14268c6f30b2c40ec0b31142ac02adc36f6487b47c1f34faa8f560c0"
+    },
+    {
+      "path": "src/literature_workflow/_vendor/nature_academic_search/filters.py",
+      "upstream_path": "src/nature_academic_search/filters.py",
+      "upstream_repository": "https://github.com/wp-a/nature-academic-search",
+      "upstream_commit": "9e4496ff7fd52ee91fde84bf944d7f5ff6085315",
+      "license": "MIT",
+      "change": "adapted",
+      "upstream_sha256": "4cac13c6e7f8c3b7956b02c993febd2faf0d3881e32bed62928916547fa2e8d3",
+      "release_sha256": "bfd7414ed6dec30408b844f13d110b4bcc88f6f2b55df0f3e20502a25de2df3b"
+    },
+    {
+      "path": "src/literature_workflow/_vendor/nature_academic_search/graph.py",
+      "upstream_path": "src/nature_academic_search/graph.py",
+      "upstream_repository": "https://github.com/wp-a/nature-academic-search",
+      "upstream_commit": "9e4496ff7fd52ee91fde84bf944d7f5ff6085315",
+      "license": "MIT",
+      "change": "adapted",
+      "upstream_sha256": "87ff39efa60a043aa6cbb3aa8bcad0c13e3474ab898dadf2a4717a7413beaa14",
+      "release_sha256": "bc70412979f2dddddda407f0051423e09717e23e18dfa88d031e4636a4a3c2fa"
+    },
+    {
+      "path": "src/literature_workflow/_vendor/nature_academic_search/http.py",
+      "upstream_path": "src/nature_academic_search/http.py",
+      "upstream_repository": "https://github.com/wp-a/nature-academic-search",
+      "upstream_commit": "9e4496ff7fd52ee91fde84bf944d7f5ff6085315",
+      "license": "MIT",
+      "change": "adapted",
+      "upstream_sha256": "4d350d3986ddafff5760495a689da2dc34d4dc697594f23ac5b0d05dfd6e02a6",
+      "release_sha256": "74e0e7436a82006dfc374877ef8a548d855d5216fa309a0c65360ef71a173a2b"
+    },
+    {
+      "path": "src/literature_workflow/_vendor/nature_academic_search/logging.py",
+      "upstream_path": "src/nature_academic_search/logging.py",
+      "upstream_repository": "https://github.com/wp-a/nature-academic-search",
+      "upstream_commit": "9e4496ff7fd52ee91fde84bf944d7f5ff6085315",
+      "license": "MIT",
+      "change": "adapted",
+      "upstream_sha256": "67596640ef174cd17ef9d297662867d1a05caa852cd5b9a8d11cfc1b82092b81",
+      "release_sha256": "cf32b1fe228f5aa4941f77d3f8c8617cffe65ecb204022469bca8e5a2c6b3288"
+    },
+    {
+      "path": "src/literature_workflow/_vendor/nature_academic_search/provenance.py",
+      "upstream_path": "src/nature_academic_search/provenance.py",
+      "upstream_repository": "https://github.com/wp-a/nature-academic-search",
+      "upstream_commit": "9e4496ff7fd52ee91fde84bf944d7f5ff6085315",
+      "license": "MIT",
+      "change": "adapted",
+      "upstream_sha256": "aeb963007820376025b1455f0e339736e00be365c56430b87bc99bb94f3bbb0b",
+      "release_sha256": "b68879967ca97e0b501608ce40d6f4187fb74ed273ef6db076bb7671fa2303a6"
+    },
+    {
+      "path": "src/literature_workflow/_vendor/nature_academic_search/ranking.py",
+      "upstream_path": "src/nature_academic_search/ranking.py",
+      "upstream_repository": "https://github.com/wp-a/nature-academic-search",
+      "upstream_commit": "9e4496ff7fd52ee91fde84bf944d7f5ff6085315",
+      "license": "MIT",
+      "change": "adapted",
+      "upstream_sha256": "9391a125aa9077c80f2a85a55f9f0a8f990c78e7e2d7583ddc68f5e2c792925a",
+      "release_sha256": "cc0f8def3a64268f011f34886e6fb2b67836d18b6ed0c10e6ccd672dd9afcd9b"
+    },
+    {
+      "path": "src/literature_workflow/_vendor/nature_academic_search/search.py",
+      "upstream_path": "src/nature_academic_search/search.py",
+      "upstream_repository": "https://github.com/wp-a/nature-academic-search",
+      "upstream_commit": "9e4496ff7fd52ee91fde84bf944d7f5ff6085315",
+      "license": "MIT",
+      "change": "adapted",
+      "upstream_sha256": "f6c2230ecd2b416a18753f90dcf03a5a31b6b4894504d3eb72b7caec38200f79",
+      "release_sha256": "71b046a2c893292c7d48e8d24a6ff32fc05d233ce82bdb42683275fab5f2dc5d"
+    },
+    {
+      "path": "src/literature_workflow/_vendor/nature_academic_search/sources/__init__.py",
+      "upstream_path": "src/nature_academic_search/sources/__init__.py",
+      "upstream_repository": "https://github.com/wp-a/nature-academic-search",
+      "upstream_commit": "9e4496ff7fd52ee91fde84bf944d7f5ff6085315",
+      "license": "MIT",
+      "change": "adapted",
+      "upstream_sha256": "f30b650d8801666b5433da4d0879063c6e77fbeb3e722f986850ee8539439cd8",
+      "release_sha256": "266a98e1cfa9ca8c7398b51f6a9655bd7c93e0ac56d85b026d79a6b601fd4538"
+    },
+    {
+      "path": "src/literature_workflow/_vendor/nature_academic_search/sources/arxiv.py",
+      "upstream_path": "src/nature_academic_search/sources/arxiv.py",
+      "upstream_repository": "https://github.com/wp-a/nature-academic-search",
+      "upstream_commit": "9e4496ff7fd52ee91fde84bf944d7f5ff6085315",
+      "license": "MIT",
+      "change": "adapted",
+      "upstream_sha256": "f9ea4a5a4b9c8f7728f5eb3af6a01fc0911a0b217e9f0c0e9d298ed5016e57e3",
+      "release_sha256": "e8a326a5b744088a225908ef7a7785525c45b8b200fd37360825c2e0b0289b6e"
+    },
+    {
+      "path": "src/literature_workflow/_vendor/nature_academic_search/sources/clinicaltrials.py",
+      "upstream_path": "src/nature_academic_search/sources/clinicaltrials.py",
+      "upstream_repository": "https://github.com/wp-a/nature-academic-search",
+      "upstream_commit": "9e4496ff7fd52ee91fde84bf944d7f5ff6085315",
+      "license": "MIT",
+      "change": "adapted",
+      "upstream_sha256": "326d3d4f69f9d4b6d9343e675689e9d7975421a4b2430312a4ccb3e1e7a80579",
+      "release_sha256": "ba08353b790d9c372bde0b9b2a1fa83267fee08404f6adee9dc45476e311c7d3"
+    },
+    {
+      "path": "src/literature_workflow/_vendor/nature_academic_search/sources/crossref.py",
+      "upstream_path": "src/nature_academic_search/sources/crossref.py",
+      "upstream_repository": "https://github.com/wp-a/nature-academic-search",
+      "upstream_commit": "9e4496ff7fd52ee91fde84bf944d7f5ff6085315",
+      "license": "MIT",
+      "change": "adapted",
+      "upstream_sha256": "b68b432b90c3a99aa651244a3dbad457926842da61ad8fdb10879e8774c3201c",
+      "release_sha256": "a800b62740e3b439dab9f05713c40dbdc45ea384b965c452c14e7ce9a53de323"
+    },
+    {
+      "path": "src/literature_workflow/_vendor/nature_academic_search/sources/europe_pmc.py",
+      "upstream_path": "src/nature_academic_search/sources/europe_pmc.py",
+      "upstream_repository": "https://github.com/wp-a/nature-academic-search",
+      "upstream_commit": "9e4496ff7fd52ee91fde84bf944d7f5ff6085315",
+      "license": "MIT",
+      "change": "adapted",
+      "upstream_sha256": "dc85f3bdf1b28d55c494b9fb26f8e29bccab5661991a5133935ab77a9c766fc3",
+      "release_sha256": "74ab0df9957c5919f9776bb652e8373bc255c9b22811322a9f3cf4d2ebd837fb"
+    },
+    {
+      "path": "src/literature_workflow/_vendor/nature_academic_search/sources/openalex.py",
+      "upstream_path": "src/nature_academic_search/sources/openalex.py",
+      "upstream_repository": "https://github.com/wp-a/nature-academic-search",
+      "upstream_commit": "9e4496ff7fd52ee91fde84bf944d7f5ff6085315",
+      "license": "MIT",
+      "change": "adapted",
+      "upstream_sha256": "9a3947c11f5f0f95e752de7e6bd0d505f27103febd362539c609561591b12672",
+      "release_sha256": "78f946182ceb1a602b0172f742067886fe94597a0f64fbcd02aa13fb5ca16731"
+    },
+    {
+      "path": "src/literature_workflow/_vendor/nature_academic_search/sources/pubmed.py",
+      "upstream_path": "src/nature_academic_search/sources/pubmed.py",
+      "upstream_repository": "https://github.com/wp-a/nature-academic-search",
+      "upstream_commit": "9e4496ff7fd52ee91fde84bf944d7f5ff6085315",
+      "license": "MIT",
+      "change": "adapted",
+      "upstream_sha256": "b27cc9e780029648c2e80660b5c8f8e4f7df2ac3e10a06d766ac0f43961c34f8",
+      "release_sha256": "100f958c7b58986ab8241003f8a9e8a2df92968c91b630fff6b120fcdc24933d"
+    },
+    {
+      "path": "src/literature_workflow/_vendor/nature_academic_search/sources/registry.py",
+      "upstream_path": "src/nature_academic_search/sources/registry.py",
+      "upstream_repository": "https://github.com/wp-a/nature-academic-search",
+      "upstream_commit": "9e4496ff7fd52ee91fde84bf944d7f5ff6085315",
+      "license": "MIT",
+      "change": "adapted",
+      "upstream_sha256": "8e4b846568324566acff58940e3767402bb92d40e90ef18f7ee234311ac7b31f",
+      "release_sha256": "14da261c7c6d57d381d6af67986eaeb2bcee65dd40a7dddb3bd93005dab0eaa8"
+    },
+    {
+      "path": "src/literature_workflow/_vendor/nature_academic_search/sources/semantic_scholar.py",
+      "upstream_path": "src/nature_academic_search/sources/semantic_scholar.py",
+      "upstream_repository": "https://github.com/wp-a/nature-academic-search",
+      "upstream_commit": "9e4496ff7fd52ee91fde84bf944d7f5ff6085315",
+      "license": "MIT",
+      "change": "adapted",
+      "upstream_sha256": "44b36247176e772562b6cfdbe7c6ad4811380c4d015c107718bd2386aa4c2c7c",
+      "release_sha256": "91c25f7b51bb3733bcf2a4d0cdad1f4355a8c5b620c22c67b3fb4493f7bc2177"
+    },
+    {
+      "path": "src/literature_workflow/_vendor/nature_academic_search/verification.py",
+      "upstream_path": "src/nature_academic_search/verification.py",
+      "upstream_repository": "https://github.com/wp-a/nature-academic-search",
+      "upstream_commit": "9e4496ff7fd52ee91fde84bf944d7f5ff6085315",
+      "license": "MIT",
+      "change": "adapted",
+      "upstream_sha256": "9f8ec7f994b043163d7055c3436fe223b6b4da539e5854c85e90337ef4067891",
+      "release_sha256": "5bb31e8e1242bce6a6ff76c2d54bd8639362b289cc4974f9fd0dd4869b5b0883"
+    }
+  ],
+  "procedural_source": {
+    "repository": "https://github.com/K-Dense-AI/scientific-agent-skills",
+    "commit": "0b2afe68a5f9379097ad815e028af664f1e222b7",
+    "skill": "paper-lookup",
+    "license": "MIT"
+  },
+  "historical_reference": {
+    "repository": "https://github.com/Rimagination/scansci-pdf",
+    "commit": "af275eb91c2ccb55c8547aec37bf56abd3a66cc4",
+    "runtime_dependency": false,
+    "source_vendored": false,
+    "license": "Apache-2.0"
+  }
+}
