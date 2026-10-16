@@ -1,55 +1,55 @@
-# 安装与依赖
+# Setup and dependencies
 
-## 安装基础功能
+## Install the base functionality
 
-需要 Python 3.11 或以上。在下载的仓库根目录使用独立 Python 环境安装：
+Python 3.11 or later is required. Install from the downloaded repository's root using a separate Python environment:
 
 ```bash
 python -m pip install .
 literature-workflow doctor --mode all
 ```
 
-基础依赖为 `requests>=2.31,<3` 和 `pypdf>=6,<7`，随安装自动准备。安装后的命令是 `literature-workflow`；源仓库也可用 `python scripts/literature.py`，参数相同。
+The base dependencies are `requests>=2.31,<3` and `pypdf>=6,<7`, installed automatically with the package. The installed command is `literature-workflow`; from the source checkout, `python scripts/literature.py` accepts the same arguments.
 
-`doctor` 只做本地诊断，不发送网络请求。它可以检查依赖和配置是否存在，不能证明数据库请求或出版社下载已成功。使用 `--mode search` 或 `--mode download` 可只诊断相关阶段。业务能力以实际命令结果为准。
+`doctor` performs local diagnostics only and sends no network requests. It can check whether dependencies and configuration exist, but cannot establish that database requests or publisher downloads have succeeded. Use `--mode search` or `--mode download` to diagnose only the relevant stage. Actual command results determine workflow capability.
 
-准备批量输入时可使用 JSON、CSV 或文本。RIS/BibTeX 输入当前仅支持提取含 DOI 的记录；无 DOI 的 RIS/BibTeX 文件会被拒绝，不属于完整语法导入。普通引用或题名请通过文本文件或 `--citation` 提供，解析不明确的项目会保留待处理状态。运行时每次为 `--output` 选择新的或空的目录，重复执行应更换目录；已有结果不会覆盖。中文报告可指定 `--language zh`。
+Batch input can use JSON, CSV, or text. RIS/BibTeX input currently extracts DOI-bearing records only; files without DOIs are rejected, and full format syntax is not imported. Supply ordinary citations or titles through a text file or `--citation`; ambiguous items remain pending. Choose a new or empty directory for `--output` on each run, and use a different directory when repeating a command; existing results are not overwritten. Use `--language zh` for Chinese reports.
 
-## 安装为 Agent Skill
+## Install as an Agent Skill
 
-将本仓库的完整目录放入 Agent 支持的技能目录，文件夹名称为 `scholarfetch`。保留 `SKILL.md`、`scripts/`、`src/`、`references/` 和许可文件。
+Place the complete repository in a skill directory supported by your Agent, using the folder name `scholarfetch`. Keep `SKILL.md`, `scripts/`, `src/`, `references/`, and the license files.
 
-Codex 的常用目录为 `~/.codex/skills/scholarfetch/`。如果配置了自定义技能目录，以实际配置为准。在 Skill 根目录安装 Python 依赖后，通过 `$scholarfetch` 调用。安装 Python 包与放置 Skill 是两个步骤；只安装包不会自动注册 Agent Skill 或 MCP。
+The usual Codex location is `~/.codex/skills/scholarfetch/`. If a custom skill directory is configured, follow that configuration. After installing the Python dependencies from the Skill root, invoke it with `$scholarfetch`. Installing the Python package and placing the Skill are separate steps; package installation alone does not automatically register an Agent Skill or MCP server.
 
-## 数据源配置
+## Source configuration
 
-默认检索来源是 `crossref,europe_pmc`。可通过 `--sources` 选择 `crossref`、`pubmed`、`arxiv`、`openalex`、`europe_pmc`、`semantic_scholar`。
+The default search sources are `crossref,europe_pmc`. Use `--sources` to select `crossref`, `pubmed`, `arxiv`, `openalex`, `europe_pmc`, or `semantic_scholar`.
 
-本实现使用 PubMed 时需要 `PUBMED_EMAIL`；缺失时该来源标为未查询。`doctor` 显示 `PUBMED_EMAIL`、`NCBI_API_KEY`、`OPENALEX_API_KEY` 和 `S2_API_KEY` 是否存在，不显示值。其他来源的邮件或 API key 配置按诊断提示与所选来源的要求准备；不能从适配器存在推断无需凭据或一定能够访问。来源选择参考 [source-guide.md](source-guide.md)。
+This implementation requires `PUBMED_EMAIL` for PubMed; when it is missing, the source is marked as not queried. `doctor` reports whether `PUBMED_EMAIL`, `NCBI_API_KEY`, `OPENALEX_API_KEY`, and `S2_API_KEY` exist without showing their values. Prepare email or API key settings for other sources according to diagnostic guidance and the selected sources' requirements. An existing adapter does not establish that credentials are unnecessary or access will succeed. See [source-guide.md](source-guide.md) for source selection.
 
-只在本地环境变量中配置个人邮件或密钥，不写入仓库、示例、结果文件或共享报告。未配置某一来源不会把其他来源的已有结果作废。网络限制、限流和服务状态也可能使请求失败。
+Configure personal email addresses or keys only in local environment variables; do not write them into the repository, examples, result files, or shared reports. Missing configuration for one source does not invalidate existing results from other sources. Network restrictions, rate limits, and service status can also cause request failures.
 
-## 可选浏览器获取
+## Optional browser acquisition
 
-HTTP 是优先获取路径；需要浏览器访问官方页面时，可安装：
+HTTP is the preferred acquisition path. When official pages require browser access, you can install:
 
 ```bash
 python -m pip install ".[browser]"
 ```
 
-该额外依赖使用 `cloakbrowser>=0.4.10,<0.5`。浏览器二进制需按 [CloakBrowser 官方说明](https://github.com/CloakHQ/CloakBrowser) 单独准备，缓存保留在本地；Python 包安装成功不能替代二进制可用性检查。浏览器二进制适用其独立许可，本仓库不分发它。
+This extra uses `cloakbrowser>=0.4.10,<0.5`. Prepare the browser binary separately using the [official CloakBrowser instructions](https://github.com/CloakHQ/CloakBrowser), and keep its cache local. Successful Python package installation does not replace a binary availability check. The browser binary has its own license and is not distributed by this repository.
 
-下载命令可用 `--no-browser` 明确只走 HTTP。浏览器获取默认在本次运行目录的 `private_profiles/` 下以新 UUID 创建独立 profile。`--profile-root` 指定这些独立 profile 的容器目录，不指定已有 profile，也不复用以前的登录或 Cookie。必要时，用户可在本次可见浏览器内手动登录，使用已有合法访问权限；本项目不从个人浏览器提取 Cookie，不自动搬迁登录状态。profile 及整个运行目录不得直接作为公开源码发布；共享结果时只选择检查过的产物。
+Use `--no-browser` on download commands to explicitly use HTTP only. Browser acquisition creates a separate profile with a new UUID under the current run's `private_profiles/` directory by default. `--profile-root` specifies the parent directory for these separate profiles, not an existing profile, and does not reuse previous logins or cookies. When necessary, the user can log in manually in the current visible browser using existing authorized access. This project does not extract cookies from personal browsers or automatically transfer login state. Do not publish profiles or the entire run directory as public source code; select only checked artifacts when sharing results.
 
-`--headless` 用于不显示浏览器的执行方式；需要交互登录或手动处理访问验证时，不应假定无界面执行可以完成。等待时长可用 `--wait` 设置，默认值以当前命令帮助为准。
+`--headless` runs without showing the browser; do not assume it can complete tasks requiring interactive login or manual access verification. Set the wait duration with `--wait`; the current command help defines the default.
 
-## 缺依赖时 Agent 的处理
+## Agent behavior when dependencies are missing
 
-先说明缺少的组件名称、受影响阶段和最小准备办法，再继续其他可执行步骤。例如：
+First state the missing component's name, affected stage, and minimum preparation, then continue other stages that can run. For example:
 
-- 缺少 `pypdf`：不能把 PDF 标为已验收；仍可保留解析结果和待处理记录。
-- 缺少 `cloakbrowser` 或浏览器二进制：继续检索、核验与 HTTP 获取，浏览器步骤报告不可用。
-- 缺少来源所需配置：记录该来源缺口，继续已配置来源，不把缺配置写成“没有相关论文”。
-- 没有论文访问权限：保留官方入口和失败原因，交给用户处理，继续批次中其他论文。
+- Missing `pypdf`: do not mark PDFs as accepted; retain resolution results and pending records.
+- Missing `cloakbrowser` or its browser binary: continue search, verification, and HTTP acquisition, and report the browser stage as unavailable.
+- Missing required source configuration: record the source gap and continue configured sources; do not describe missing configuration as "no relevant papers."
+- Missing paper access rights: retain the official entry point and failure reason for the user to address, and continue other papers in the batch.
 
-不要将组件安装、配置存在或本地诊断通过描述为真实联网成功。不要擅自启用付费服务、导出凭据或以其他本机旧环境冒充本项目执行。
+Do not describe component installation, existing configuration, or successful local diagnostics as successful live network execution. Do not enable paid services without authorization, export credentials, or present execution from an older local environment as execution of this project.

@@ -12,42 +12,42 @@ description: >-
 
 **Academic Literature Search & PDF Download**
 
-统一处理主题检索、已有文献核验、官方 PDF 下载与候选引用导出。使用者提供主题、DOI、题名、引用或列表；根据请求运行必要阶段，无需强制准备 CSV 或拆成多轮任务。
+Handle topic searches, verification of existing references, official PDF downloads, and candidate citation exports in one workflow. The user can provide a topic, DOI, title, citation, or list; run the stages required by the request without requiring a CSV or splitting the task into multiple rounds.
 
 <!-- Agent instruction: Before execution, check the executable and dependencies needed for the requested stages. When a dependency or tool is missing, tell the user its exact name, the affected stage, and the minimum preparation needed. Continue independent stages that remain available. Never invent execution or success, silently substitute an old local runtime, install paid services without authorization, or copy/export keys, cookies, or browser profiles. -->
 
-## 执行前
+## Before execution
 
-从本 Skill 根目录使用 `python scripts/literature.py`，或安装后使用 `literature-workflow`；先执行 `doctor --mode all` 并确认所需命令的 `--help`。诊断只检查本地依赖与部分配置，不证明网络或浏览器二进制可用。依赖和安装方式见 [setup.md](references/setup.md)。不假设主机已安装旧版 Skill、MCP 或浏览器。
+Use `python scripts/literature.py` from this Skill's root directory, or `literature-workflow` after installation. First run `doctor --mode all` and check `--help` for the required commands. Diagnostics check only local dependencies and some configuration; they do not establish network access or browser binary availability. See [setup.md](references/setup.md) for dependencies and installation. Do not assume that an older Skill, MCP server, or browser is installed on the host.
 
-明确会影响结果的主题、年份、文献类型、预印本政策、规模和输出目录。中文主题先整理英文自由词；如需 MeSH，应另行查证适用于该生物医学问题的主题词，本 CLI 不提供 MeSH 核验命令。原始主题与实际查询分别保留，不把翻译后的检索式描述成已核验术语。
+Clarify the topic, years, document types, preprint policy, scale, and output directory where they affect the results. Convert Chinese topics into English free-text keywords first. If MeSH is needed, separately verify the subject headings appropriate to the biomedical question; this CLI does not provide a MeSH verification command. Retain the original topic and actual query separately, and do not describe a translated search expression as verified terminology.
 
-## 按需求路由
+## Route by request
 
-| 请求 | 运行阶段 | 交付重点 |
+| Request | Stages | Delivery focus |
 |---|---|---|
-| 按主题找论文 | 检索 → 去重；需要时核验 | 候选、实际查询来源、来源失败与范围缺口 |
-| 核验 DOI 或引用 | 身份解析 → 比较提供的预期字段 | 匹配依据、冲突、未核验字段 |
-| 下载 DOI、官方链接或列表 | 解析与必要核验 → 官方获取 → PDF 检查 | 通过检查的文件、逐条状态、待处理项目 |
-| 检索并下载 | 检索 → 核验 → 官方获取 → PDF 检查 | 保持候选与文件对应，同轮完成已获授权步骤 |
-| 导出引用 | 读取核验结果 → 导出合格记录 | 导出数量、未导出原因，不自动导入文献库 |
+| Find papers on a topic | Search → deduplicate; verify when needed | Candidates, sources actually queried, source failures, and coverage gaps |
+| Verify a DOI or citation | Resolve identity → compare supplied expected fields | Matching evidence, conflicts, and unchecked fields |
+| Download DOIs, official links, or a list | Resolve and verify as needed → acquire from official sources → check PDFs | Accepted files, per-item statuses, and pending items |
+| Search and download | Search → verify → acquire from official sources → check PDFs | Keep candidates linked to files and complete authorized stages in the same round |
+| Export citations | Read verification results → export eligible records | Export counts and omission reasons; no automatic import into a reference library |
 
-对应命令为 `search`、`verify`、`download`、`search-download` 和 `export`。业务命令显式传入 `--output`，按需要设置 `--language zh|en`。详见 [工作流与结果契约](references/workflow-contract.md)。选择来源或遇到来源响应异常时，按需读取 [来源指南](references/source-guide.md)。默认查询 `crossref,europe_pmc`，不要因上游文档介绍多个数据库就声称本实现已接入全部来源。
+The corresponding commands are `search`, `verify`, `download`, `search-download`, and `export`. Pass `--output` explicitly for workflow commands and set `--language zh|en` as needed. See the [workflow and output contract](references/workflow-contract.md). Read the [source guide](references/source-guide.md) as needed when choosing sources or handling abnormal source responses. The default sources are `crossref,europe_pmc`; do not claim that this implementation supports every source merely because upstream documentation describes multiple databases.
 
-## 核心规则
+## Core rules
 
-- 对实际查询、零结果、请求失败、未查询和检索范围受限分别说明。保留成功结果，隔离失败来源或歧义记录。
-- 合并以强标识符及版本证据为依据；题名相似是线索。强标识符冲突不静默覆盖，预印本与出版版不混成同一身份。
-- 单独 DOI 查找到记录仅证明解析结果；判断原引用是否正确还需比较使用者提供的预期字段。说明具体核验字段与无法核验的字段。
-- 元数据匹配、PDF 身份检查、论断支持和人工选引分别报告。默认不判定论断支持、不替使用者决定最终引用。
-- 自动下载仅接受可核实的官方出版社来源。传入 PDF URL 是候选入口，仍须查来源和文件身份；不回退到仓储或第三方副本。
-- 对无权限、403、未解决的访问验证、非 PDF 或身份冲突记录待处理原因，不持续重复硬重试，不绕过访问控制。
-- HTTP 200、下载事件、文件存在或命令退出成功不代表文件可交付。只有来源与 PDF 检查通过的文件进入最终论文目录。
-- 遵循使用者指定输出目录，使用独立运行目录保留本次记录。日志和交换文件不含密钥、认证头、Cookie、浏览器凭据或签名 URL 参数。
-- 不默认调用外部 LLM、中转服务或付费接口，不把私有正文发送到外部服务。准备依赖不代表获得新外部写操作或额外费用授权。
+- Distinguish actual queries, valid zero results, request failures, sources not queried, and limited search scope. Retain successful results and isolate failed sources or ambiguous records.
+- Merge using strong identifiers and version evidence; title similarity is a clue. Do not silently overwrite conflicting strong identifiers or merge preprints and published versions into one identity.
+- Finding a record by DOI establishes only the resolution result. Checking whether the original citation is correct also requires comparison with the user's expected fields. State which fields were checked and which could not be checked.
+- Report metadata matches, PDF identity checks, claim support, and manual citation selection separately. Do not assess claim support or decide the user's final citations by default.
+- Automated downloads accept only verifiable official publisher sources. A supplied PDF URL is a candidate entry point whose provenance and file identity still require checks; do not fall back to repository or third-party copies.
+- Record pending reasons for missing access rights, HTTP 403, unresolved access verification, non-PDF responses, or identity conflicts. Do not keep repeating aggressive retries or bypass access controls.
+- HTTP 200, a download event, an existing file, or a successful command exit does not establish that a file is deliverable. Only files that pass provenance and PDF checks enter the final papers directory.
+- Follow the user's output directory and retain this run's records in a separate run directory. Logs and exchange files must not contain keys, authorization headers, cookies, browser credentials, or signed URL parameters.
+- Do not call external LLMs, relay services, or paid APIs by default, and do not send private full text to external services. Preparing dependencies does not authorize new external writes or additional costs.
 
-## 交付
+## Delivery
 
-先用使用者要求的语言说明得到什么、哪些步骤完成、哪些项目需要处理，再链接实际生成的结果。报告来源、访问日期、范围限制和验证依据；引用导出只是数据交换，不自动修改 Zotero、Word 或稿件。
+First explain, in the user's requested language, what was obtained, which stages completed, and which items need attention; then link the results actually generated. Report sources, access dates, scope limits, and verification evidence. Citation export is data exchange only and does not automatically modify Zotero, Word, or a manuscript.
 
-请求示例见 [examples/requests.md](examples/requests.md)。
+See [examples/requests.md](examples/requests.md) for request examples.

@@ -1,69 +1,69 @@
-# 使用示例
+# Request examples
 
-以下是可直接交给 Agent 的请求。示例说明任务范围，不是已经执行过的研究结果。
+The following requests can be given directly to an Agent. They illustrate task scope, not research results that have already been produced.
 
-## 主题检索
+## Topic search
 
 ```text
-使用 $scholarfetch，查找 2022—2026 年二维半导体中激子输运的研究。
-先给我 10 篇候选，包含预印本，但明确区分预印本与正式发表版本。
-说明实际检索了哪些来源、哪些请求失败，以及核验了哪些字段。
+Use $scholarfetch to find research on exciton transport in two-dimensional semiconductors from 2022 to 2026.
+Start with 10 candidate papers, including preprints, and clearly distinguish preprints from published versions.
+State which sources were actually searched, which requests failed, and which fields were verified.
 ```
 
-Agent 将中文主题整理成适合数据库的英文关键词，再选择可用来源。文献数量是目标规模，不表示数据库已被穷尽。
+For a Chinese topic, the Agent first prepares English keywords suitable for the databases, then selects available sources. The paper count is a target scale, not evidence that the databases have been searched exhaustively.
 
-直接使用 CLI 时可显式设置日期、作者和文献类型。例如：
+When using the CLI directly, you can set dates, author, and document types explicitly. For example:
 
 ```bash
 literature-workflow search "Sharing Detailed Research Data" --sources crossref --rows 3 --date-from 2007-01-01 --date-to 2007-12-31 --author Piwowar --document-type journal-article --language zh --output runs/filtered-search
 ```
 
-日期采用 `YYYY-MM-DD`；`--document-type` 可重复传入。相同过滤选项也适用于 `search-download`。命令记录请求条件；具体执行范围取决于来源支持，不将参数存在当成过滤成功证明。
+Dates use `YYYY-MM-DD`; `--document-type` can be repeated. The same filters apply to `search-download`. The command records requested filters; actual execution scope depends on source support. The presence of a parameter does not establish that filtering succeeded.
 
-## 核验已有引用
-
-```text
-使用 $scholarfetch，核对我粘贴的参考文献列表。
-检查 DOI、题名、首位作者和年份，保留原输入。
-把一致、存在冲突和无法确定的项目分开，不要补造缺失字段。
-```
-
-单独提供 DOI 可以核对它是否解析到一条记录；若要判断原引用是否正确，也请提供预期题名、作者或年份作为比较依据。
-
-## 下载指定论文
+## Verify existing references
 
 ```text
-使用 $scholarfetch，下载我提供的 DOI 或官方出版社链接对应的 PDF。
-仅保留通过来源与身份检查的文件，输出目录用本项目的 official_papers。
-无法获取的项目继续保留 DOI、失败原因和下一步建议。
+Use $scholarfetch to check the reference list I paste.
+Check DOIs, titles, first authors, and years, and preserve the original input.
+Separate matching, conflicting, and unresolved items; do not invent missing fields.
 ```
 
-无需先进行主题检索。下载成功与否取决于出版社页面、文件可读性和当前访问权限；访问受限的项目会留下待处理记录。
+A DOI alone can be checked to see whether it resolves to a record. To check whether the original citation is correct, also supply its expected title, author, or year for comparison.
 
-## 检索后下载
+## Download specific papers
 
 ```text
-使用 $scholarfetch，查找近五年的室温二维材料光探测研究，
-核验前 5 篇候选并尝试下载官方 PDF。
-一次完成这些步骤，报告每篇文献的核验状态、文件状态和缺口。
+Use $scholarfetch to download PDFs for the DOIs or official publisher links I provide.
+Keep only files that pass provenance and identity checks, using this project's official_papers output directory.
+For unavailable items, retain the DOI, failure reason, and suggested next step.
 ```
 
-检索中发现的预印本可作为候选记录保留；自动 PDF 下载阶段仍按官方出版社来源规则执行。
+A topic search is not required first. Download success depends on publisher pages, file readability, and current access rights. Access-restricted items remain in the pending records.
 
-## 导出引用交换文件
+## Search and download
 
 ```text
-使用 $scholarfetch，把本次已核验的论文导出为 RIS 和 BibTeX。
-列出未导出的记录和原因，保留来源记录供我复核。
+Use $scholarfetch to find research from the past five years on room-temperature photodetection in two-dimensional materials.
+Verify the first 5 candidates and try to download their official PDFs.
+Complete these stages in one task and report each paper's verification status, file status, and gaps.
 ```
 
-导出文件用于后续文献管理。Skill 不自动导入 Zotero，也不插入或刷新 Word 引用字段。
+Preprints found during search can be retained as candidate records. Automated PDF downloads still follow the official publisher source rules.
 
-## 依赖不全时
+## Export citation exchange files
 
 ```text
-使用 $scholarfetch，先检查当前环境。
-告诉我缺少哪个依赖、影响哪一步、最少需要准备什么；继续完成当前能运行的步骤。
+Use $scholarfetch to export this run's verified papers as RIS and BibTeX.
+List omitted records and reasons, and retain source records for my review.
 ```
 
-例如缺少可选浏览器组件时，仍可检索、核验并尝试直接 HTTP 下载；浏览器获取阶段需在组件准备后才能执行。
+Exported files are for subsequent reference management. The Skill does not automatically import into Zotero or insert or refresh Word citation fields.
+
+## Missing dependencies
+
+```text
+Use $scholarfetch to check the current environment first.
+Tell me which dependency is missing, which stage is affected, and the minimum preparation needed; continue stages that can run now.
+```
+
+For example, when optional browser components are missing, search, verification, and direct HTTP download attempts can still run. Browser acquisition requires those components to be prepared first.
