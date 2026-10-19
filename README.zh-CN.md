@@ -2,19 +2,13 @@
 
 [English](README.md) | **简体中文**
 
-ScholarFetch 是一个 Skill，让 AI Agent 广泛检索学术文献、核对查到的信息，并直接从官方出版社下载 PDF。给它一个研究主题、一份文献列表或一个 DOI，它会返回通过检查的论文、可追溯的记录，以及仍需你处理的少量项目。
-
-- **广泛检索。** 查询 Crossref、PubMed、OpenAlex、Europe PMC、Semantic Scholar 和 arXiv，合并重复记录，得到附来源记录的候选列表。
-- **先核对，再采信。** 逐项比较题名、作者、年份和 DOI，标出每一处冲突或缺失字段。
-- **自动下载。** 只从官方出版社获取 PDF；普通下载无法打开的页面由专用浏览器处理，每份 PDF 先核对身份再收下。
+一个用于文献检索、元数据核验和官方出版社 PDF 获取的 Skill 与命令行工具。它检索 Crossref、PubMed、OpenAlex、Europe PMC、Semantic Scholar 和 arXiv 并合并重复记录；将题名、作者、年份和 DOI 与所给文献逐项比对；只从官方出版社获取 PDF，普通 HTTP 请求无法打开的页面由专用浏览器处理。每份 PDF 经身份核对后才被接受，所有结果与失败均有记录。
 
 <img src="assets/overview.png" alt="可以从研究主题、文献列表或 DOI/链接开始。ScholarFetch 检索六个学术数据库并去重，逐字段核对元数据，通过专用浏览器从官方出版社下载 PDF 并核对其身份。产出包括带来源的候选列表、匹配报告、RIS/BibTeX 导出、通过检查的 PDF 和待处理项目。" width="1600">
 
-## 怎么工作
+## 入口
 
-从你需要的那一步开始：给主题会跑完整条流程，已有文献列表从核对开始，DOI 或出版社链接直接进入下载。核对通过的记录可以导出为 RIS 或 BibTeX。
-
-检索结果是候选文献。书目信息匹配、PDF 身份确认，以及论文是否支持某个论点，是不同的判断；选用哪些引用仍由你决定。ScholarFetch 不导入 Zotero、不修改 Word 引用，这一步由 [Zotero-Word-AutoCite](https://github.com/LiX-Works/Zotero-Word-AutoCite) 完成。
+给出主题时运行完整流程，已有文献列表从核验开始，DOI 或出版社链接直接进入下载；核验通过的记录可导出为 RIS 或 BibTeX。检索结果是候选文献：书目信息匹配、PDF 身份确认与论文能否支撑论点是不同判断，引用的选择仍由使用者决定。在 Word 中写入引用由 [Zotero-Word-AutoCite](https://github.com/LiX-Works/Zotero-Word-AutoCite) 完成。
 
 ## 开始使用
 
@@ -25,10 +19,7 @@ python -m pip install .
 literature-workflow doctor --mode all
 ```
 
-- **Python 3.11 及以上。** 基础安装会装上 requests 和 pypdf，用于检索、核对、直接下载和 PDF 检查。
-- **浏览器路线（可选）。** 运行 `python -m pip install ".[browser]"`，并按 cloakbrowser 官方说明准备浏览器二进制。不装也不影响其他步骤。
-- **数据源配置。** 部分来源需要配置，例如 PubMed 需要 `PUBMED_EMAIL`；`doctor` 会提示缺什么。
-- **出版社访问权限。** 受限论文使用你自己已有的合法访问权限。
+基础安装（Python 3.11 及以上）提供检索、核验、直接下载和 PDF 检查。可选的浏览器路线需运行 `python -m pip install ".[browser]"` 并准备 cloakbrowser 浏览器二进制；未安装时其他步骤照常运行。部分来源需要配置，例如 PubMed 需要 `PUBMED_EMAIL`，`doctor` 会报告缺失项。受限论文使用你已有的出版社访问权限。
 
 不需要 MCP、外部大模型或付费中转。项目不附带账号、Cookie、浏览器 profile 或浏览器二进制。详见[安装与依赖](references/setup.md)。
 

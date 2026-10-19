@@ -2,19 +2,13 @@
 
 **English** | [简体中文](README.zh-CN.md)
 
-ScholarFetch is a Skill that lets an AI agent search the scholarly literature broadly, verify what it finds, and download PDFs straight from official publishers. Give it a topic, a reference list, or a DOI; it returns checked papers, traceable records, and a short list of anything that still needs you.
-
-- **Search broadly.** Queries Crossref, PubMed, OpenAlex, Europe PMC, Semantic Scholar, and arXiv, then merges duplicates into one candidate list with source records.
-- **Verify before trusting.** Compares titles, authors, years, and DOIs against your input, and flags every conflict or missing field.
-- **Download automatically.** Fetches PDFs only from official publishers, uses a dedicated browser for pages a plain download cannot reach, and checks each PDF's identity before accepting it.
+A Skill and command-line tool for literature search, metadata verification, and PDF acquisition from official publishers. It searches Crossref, PubMed, OpenAlex, Europe PMC, Semantic Scholar, and arXiv and merges duplicates; compares titles, authors, years, and DOIs against the supplied references; and downloads PDFs only from official publisher sources, using a dedicated browser for pages that plain HTTP requests cannot reach. Each PDF is identity-checked before it is accepted, and every result and failure is recorded.
 
 <img src="assets/overview.png" alt="Start from a topic, a reference list, or a DOI or link. ScholarFetch searches six scholarly databases and deduplicates the results, verifies metadata field by field, and downloads official publisher PDFs through a dedicated browser, checking each PDF's identity. Outputs are candidates with sources, a match report, RIS or BibTeX export, checked PDFs, and items that need attention." width="1600">
 
-## How it works
+## Entry points
 
-Start from whichever step you need: a topic runs the full chain, an existing reference list starts at verification, and a DOI or publisher link goes straight to download. Verified records can be exported as RIS or BibTeX.
-
-Search results are candidates. Matching metadata, confirming a PDF's identity, and deciding whether a paper supports a claim are separate judgments, and citation choices stay with you. ScholarFetch does not import into Zotero or edit Word citations; [Zotero-Word-AutoCite](https://github.com/LiX-Works/Zotero-Word-AutoCite) covers that step.
+A topic runs the full chain, a reference list starts at verification, and a DOI or publisher link goes directly to download; verified records can be exported as RIS or BibTeX. Search results are candidates: metadata matching, PDF identity, and whether a paper supports a claim are separate judgments, and citation choices remain with the user. Inserting citations into Word is handled by [Zotero-Word-AutoCite](https://github.com/LiX-Works/Zotero-Word-AutoCite).
 
 ## Getting started
 
@@ -25,10 +19,7 @@ python -m pip install .
 literature-workflow doctor --mode all
 ```
 
-- **Python 3.11 or later.** The base install adds requests and pypdf for search, verification, direct downloads, and PDF checks.
-- **Browser route (optional).** Run `python -m pip install ".[browser]"` and prepare the cloakbrowser binary as its documentation describes. Without it, the other stages still run.
-- **Source settings.** Some sources need configuration, such as `PUBMED_EMAIL` for PubMed; `doctor` reports what is missing.
-- **Publisher access.** Restricted papers use your own existing access.
+The base install (Python 3.11 or later) provides search, verification, direct downloads, and PDF checks. The optional browser route needs `python -m pip install ".[browser]"` and the cloakbrowser binary; without it, the other stages still run. Some sources need configuration, such as `PUBMED_EMAIL` for PubMed, and `doctor` reports what is missing. Restricted papers use your existing publisher access.
 
 No MCP server, external language model, or paid relay is required. Accounts, cookies, browser profiles, and browser binaries are not bundled. See [setup and dependencies](references/setup.md).
 
