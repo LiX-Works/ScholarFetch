@@ -2,13 +2,21 @@
 
 **English** | [简体中文](README.zh-CN.md)
 
-A Skill and command-line tool for literature search, metadata verification, and PDF acquisition from official publishers. It searches Crossref, PubMed, OpenAlex, Europe PMC, Semantic Scholar, and arXiv and merges duplicates; compares titles, authors, years, and DOIs against the supplied references; and downloads PDFs only from official publisher sources, using a dedicated browser for pages that plain HTTP requests cannot reach. Each PDF is identity-checked before it is accepted, and every result and failure is recorded.
+Give ScholarFetch a research topic, a reference list, or a DOI; it returns verified records and the publishers' own PDFs. The Skill and its command-line tool work in three stages:
+
+1. **Search** Crossref, PubMed, OpenAlex, Europe PMC, Semantic Scholar, and arXiv, merging duplicates into one candidate list with source records.
+2. **Verify** titles, authors, years, and DOIs against the supplied references, flagging conflicts and missing fields.
+3. **Download** PDFs from official publishers only, through a dedicated browser when a page cannot be fetched directly. Each PDF is identity-checked before it is accepted.
+
+Every result and every failure is recorded.
 
 <img src="assets/overview.png" alt="Start from a topic, a reference list, or a DOI or link. ScholarFetch searches six scholarly databases and deduplicates the results, verifies metadata field by field, and downloads official publisher PDFs through a dedicated browser, checking each PDF's identity. Outputs are candidates with sources, a match report, RIS or BibTeX export, checked PDFs, and items that need attention." width="1600">
 
 ## Entry points
 
-A topic runs the full chain, a reference list starts at verification, and a DOI or publisher link goes directly to download; verified records can be exported as RIS or BibTeX. Search results are candidates: metadata matching, PDF identity, and whether a paper supports a claim are separate judgments, and citation choices remain with the user. Inserting citations into Word is handled by [Zotero-Word-AutoCite](https://github.com/LiX-Works/Zotero-Word-AutoCite).
+A topic runs the full chain, a reference list starts at verification, and a DOI or publisher link goes directly to download. Verified records can be exported as RIS or BibTeX.
+
+Search results are candidates: metadata matching, PDF identity, and whether a paper supports a claim are separate judgments, and citation choices remain with the user. Inserting citations into Word is handled by [Zotero-Word-AutoCite](https://github.com/LiX-Works/Zotero-Word-AutoCite).
 
 ## Getting started
 
@@ -19,7 +27,10 @@ python -m pip install .
 literature-workflow doctor --mode all
 ```
 
-The base install (Python 3.11 or later) provides search, verification, direct downloads, and PDF checks. The optional browser route needs `python -m pip install ".[browser]"` and the cloakbrowser binary; without it, the other stages still run. Some sources need configuration, such as `PUBMED_EMAIL` for PubMed, and `doctor` reports what is missing. Restricted papers use your existing publisher access.
+- The base install (Python 3.11 or later) covers search, verification, direct downloads, and PDF checks.
+- The browser route is optional: `python -m pip install ".[browser]"` plus the cloakbrowser binary. Other stages run without it.
+- Some sources need configuration, such as `PUBMED_EMAIL` for PubMed; `doctor` reports what is missing.
+- Restricted papers use your existing publisher access.
 
 No MCP server, external language model, or paid relay is required. Accounts, cookies, browser profiles, and browser binaries are not bundled. See [setup and dependencies](references/setup.md).
 
