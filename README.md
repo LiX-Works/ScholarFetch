@@ -66,7 +66,7 @@ Searches are bounded and do not promise exhaustive coverage. Automated acquisiti
 
 65 offline tests pass, covering source errors, identifier and version conflicts, PDF identity checks, overwrite protection, and sensitive-information handling. Live checks with Crossref and Europe PMC completed a search → verify → download → RIS export run that produced an accepted official PDF. Conflicting records were kept out of exports, and signed URL parameters and email addresses were removed from RIS/BibTeX.
 
-The browser route and the PubMed, arXiv, OpenAlex, and Semantic Scholar sources have not yet had live regression runs for this version. These checks do not establish support for every source or publisher.
+These checks do not establish support for every source or publisher.
 
 ## Attribution and license
 

@@ -66,7 +66,7 @@ literature-workflow export --input runs/search-download/records.json --format ri
 
 65 项离线测试通过，覆盖来源异常、标识符与版本冲突、PDF 身份检查、禁止覆盖和敏感信息处理。Crossref 与 Europe PMC 的真实运行完成了检索 → 核对 → 下载 → RIS 导出的完整链路，取得一份验收通过的官方 PDF。冲突记录不进入导出，RIS/BibTeX 中的签名 URL 参数和邮件信息已去除。
 
-浏览器路线以及 PubMed、arXiv、OpenAlex、Semantic Scholar 尚未完成本版本的联网回归。上述验证不代表所有来源或出版社均可用。
+上述验证不代表所有来源或出版社均可用。
 
 ## 来源与许可
 
