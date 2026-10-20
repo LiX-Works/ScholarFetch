@@ -6,9 +6,12 @@ Give ScholarFetch a research topic, a reference list, or a DOI; it returns verif
 
 1. **Search** Crossref, PubMed, OpenAlex, Europe PMC, Semantic Scholar, and arXiv, merging duplicates into one candidate list with source records.
 2. **Verify** titles, authors, years, and DOIs against the supplied references, flagging conflicts and missing fields.
-3. **Download** PDFs from official publishers only, through a dedicated browser when a page cannot be fetched directly. Each PDF is identity-checked before it is accepted.
+3. **Download** PDFs from official publishers through a dedicated browser that navigates each publisher's page with your own institutional access. Each PDF is identity-checked before it is accepted.
 
 Every result and every failure is recorded.
+
+> [!NOTE]
+> **Human-in-the-Loop.** This Skill handles repetitive research tasks; it supports research rather than doing it. Keep questions, judgments, and conclusions with people, and check every result before use.
 
 <img src="assets/overview.png" alt="Start from a topic, a reference list, or a DOI or link. ScholarFetch searches six scholarly databases and deduplicates the results, verifies metadata field by field, and downloads official publisher PDFs through a dedicated browser, checking each PDF's identity. Outputs are candidates with sources, a match report, RIS or BibTeX export, checked PDFs, and items that need attention." width="1600">
 
@@ -16,7 +19,7 @@ Every result and every failure is recorded.
 
 A topic runs the full chain, a reference list starts at verification, and a DOI or publisher link goes directly to download. Verified records can be exported as RIS or BibTeX.
 
-Search results are candidates: metadata matching, PDF identity, and whether a paper supports a claim are separate judgments, and citation choices remain with the user. Inserting citations into Word is handled by [Zotero-Word-AutoCite](https://github.com/LiX-Works/Zotero-Word-AutoCite).
+Search results are candidates; which papers to cite remains the user's decision. Inserting citations into Word is handled by [Zotero-Word-AutoCite](https://github.com/LiX-Works/Zotero-Word-AutoCite).
 
 ## Getting started
 
@@ -28,7 +31,7 @@ literature-workflow doctor --mode all
 ```
 
 - The base install (Python 3.11 or later) covers search, verification, direct downloads, and PDF checks.
-- The browser route is optional: `python -m pip install ".[browser]"` plus the cloakbrowser binary. Other stages run without it.
+- Browser downloads, the main acquisition route, need `python -m pip install ".[browser]"` and the cloakbrowser binary. Without them, the other stages still run.
 - Some sources need configuration, such as `PUBMED_EMAIL` for PubMed; `doctor` reports what is missing.
 - Restricted papers use your existing publisher access.
 
