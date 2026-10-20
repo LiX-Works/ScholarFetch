@@ -13,7 +13,7 @@ Every result and every failure is recorded.
 > [!NOTE]
 > **Human-in-the-Loop.** This Skill handles repetitive research tasks; it supports research rather than doing it. Keep questions, judgments, and conclusions with people, and check every result before use.
 
-<img src="assets/overview.png" alt="Start from a topic, a reference list, or a DOI or link. ScholarFetch searches six scholarly databases and deduplicates the results, verifies metadata field by field, and downloads official publisher PDFs through a dedicated browser, checking each PDF's identity. Outputs are candidates with sources, a match report, RIS or BibTeX export, checked PDFs, and items that need attention." width="1600">
+<img src="assets/overview.png" alt="ScholarFetch searches scholarly databases and checks metadata, downloads publisher PDFs through a dedicated browser using your institutional access, and leaves citation choices to you." width="1600">
 
 ## Entry points
 

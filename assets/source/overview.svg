@@ -1,132 +1,88 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="720" viewBox="0 0 1600 720" font-family="Arial,Helvetica,sans-serif" role="img" aria-labelledby="title desc">
-<title id="title">ScholarFetch overview</title>
-<desc id="desc">Start from a topic, a reference list, or a DOI or link. ScholarFetch searches six scholarly databases and deduplicates the results, verifies metadata field by field, and downloads official publisher PDFs through a dedicated browser, checking each PDF's identity. Outputs are candidates with sources, a match report, RIS or BibTeX export, checked PDFs, and items that need attention.</desc>
-<rect width="1600" height="720" fill="#FFFFFF"/>
-<defs>
-  <linearGradient id="leadGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#22386A"/><stop offset="1" stop-color="#3866A6"/></linearGradient>
-  <linearGradient id="sheen" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".16"/><stop offset=".45" stop-color="#fff" stop-opacity="0"/></linearGradient>
-  <filter id="shadow" x="-20%" y="-30%" width="140%" height="170%"><feDropShadow dx="0" dy="5" stdDeviation="8" flood-color="#16203A" flood-opacity=".10"/></filter>
-  <filter id="leadShadow" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="10" stdDeviation="16" flood-color="#22386A" flood-opacity=".32"/></filter>
-</defs>
-<rect x="95" y="28" width="330" height="64" rx="32" fill="#FFFFFF" stroke="#C3CDDD" stroke-width="1.8" filter="url(#shadow)"/>
-<text x="260" y="69" font-size="24" font-weight="700" fill="#16203A" text-anchor="middle" >Start from a topic</text>
-<path d="M260 99 L260 139.8" fill="none" stroke="#2E3A55" stroke-width="5.5"/>
-<path d="M260 153 L249 131 L271 131Z" fill="#2E3A55"/>
-<rect x="595" y="28" width="330" height="64" rx="32" fill="#FFFFFF" stroke="#C3CDDD" stroke-width="1.8" filter="url(#shadow)"/>
-<text x="760" y="69" font-size="24" font-weight="700" fill="#16203A" text-anchor="middle" >Start from a reference list</text>
-<path d="M760 99 L760 139.8" fill="none" stroke="#2E3A55" stroke-width="5.5"/>
-<path d="M760 153 L749 131 L771 131Z" fill="#2E3A55"/>
-<rect x="1135" y="28" width="330" height="64" rx="32" fill="#FFFFFF" stroke="#C3CDDD" stroke-width="1.8" filter="url(#shadow)"/>
-<text x="1300" y="69" font-size="24" font-weight="700" fill="#16203A" text-anchor="middle" >Start from a DOI or link</text>
-<path d="M1300 99 L1300 139.8" fill="none" stroke="#2E3A55" stroke-width="5.5"/>
-<path d="M1300 153 L1289 131 L1311 131Z" fill="#2E3A55"/>
-<rect x="40" y="160" width="440" height="380" rx="24" fill="#FFFFFF" stroke="#C3CDDD" stroke-width="1.8" filter="url(#shadow)"/>
-<circle cx="86" cy="206" r="19" fill="#36579A"/>
-<text x="86" y="215" font-size="24" font-weight="700" fill="#FFFFFF" text-anchor="middle" >1</text>
-<text x="120" y="216" font-size="30" font-weight="700" fill="#16203A" text-anchor="start" >Search broadly</text>
-<rect x="68" y="246" width="384" height="228" rx="16" fill="#E4ECF8"/>
-<rect x="80" y="269" width="172" height="50" rx="12" fill="#FFFFFF" stroke="#9DB2D6" stroke-width="1.6"/>
-<text x="166" y="301" font-size="21" font-weight="700" fill="#36579A" text-anchor="middle" >Crossref</text>
-<rect x="268" y="269" width="172" height="50" rx="12" fill="#FFFFFF" stroke="#9DB2D6" stroke-width="1.6"/>
-<text x="354" y="301" font-size="21" font-weight="700" fill="#36579A" text-anchor="middle" >PubMed</text>
-<rect x="80" y="335" width="172" height="50" rx="12" fill="#FFFFFF" stroke="#9DB2D6" stroke-width="1.6"/>
-<text x="166" y="367" font-size="21" font-weight="700" fill="#36579A" text-anchor="middle" >OpenAlex</text>
-<rect x="268" y="335" width="172" height="50" rx="12" fill="#FFFFFF" stroke="#9DB2D6" stroke-width="1.6"/>
-<text x="354" y="367" font-size="21" font-weight="700" fill="#36579A" text-anchor="middle" >Europe PMC</text>
-<rect x="80" y="401" width="172" height="50" rx="12" fill="#FFFFFF" stroke="#9DB2D6" stroke-width="1.6"/>
-<text x="166" y="433" font-size="18" font-weight="700" fill="#36579A" text-anchor="middle" >Semantic Scholar</text>
-<rect x="268" y="401" width="172" height="50" rx="12" fill="#FFFFFF" stroke="#9DB2D6" stroke-width="1.6" stroke-dasharray="6 5"/>
-<text x="354" y="433" font-size="21" font-weight="700" fill="#36579A" text-anchor="middle" >arXiv</text>
-<text x="260" y="512" font-size="24" font-weight="400" fill="#2C3850" text-anchor="middle" >Six databases, deduplicated</text>
-<rect x="560" y="160" width="400" height="380" rx="24" fill="#FFFFFF" stroke="#C3CDDD" stroke-width="1.8" filter="url(#shadow)"/>
-<circle cx="606" cy="206" r="19" fill="#5A3CC2"/>
-<text x="606" y="215" font-size="24" font-weight="700" fill="#FFFFFF" text-anchor="middle" >2</text>
-<text x="640" y="216" font-size="30" font-weight="700" fill="#16203A" text-anchor="start" >Verify metadata</text>
-<rect x="588" y="246" width="344" height="228" rx="16" fill="#F1ECFD"/>
-<rect x="606" y="256" width="308" height="46" rx="12" fill="#FFFFFF"/>
-<text x="628" y="287" font-size="22" font-weight="700" fill="#16203A" text-anchor="start" >Title</text>
-<circle cx="882" cy="279" r="15" fill="#2F8A5F"/>
-<path d="M875.2 279 l4.5 4.8 l8.2 -9.3" fill="none" stroke="#FFFFFF" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" />
-<rect x="606" y="310" width="308" height="46" rx="12" fill="#FFFFFF"/>
-<text x="628" y="341" font-size="22" font-weight="700" fill="#16203A" text-anchor="start" >Authors</text>
-<circle cx="882" cy="333" r="15" fill="#2F8A5F"/>
-<path d="M875.2 333 l4.5 4.8 l8.2 -9.3" fill="none" stroke="#FFFFFF" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" />
-<rect x="606" y="364" width="308" height="46" rx="12" fill="#FBE5E3"/>
-<text x="628" y="395" font-size="22" font-weight="700" fill="#16203A" text-anchor="start" >Year</text>
-<text x="856" y="395" font-size="20" font-weight="700" fill="#C2413B" text-anchor="end" >conflict</text>
-<circle cx="882" cy="387" r="15" fill="#C2413B"/>
-<path d="M876.3 381.3 L887.7 392.7 M887.7 381.3 L876.3 392.7" fill="none" stroke="#FFFFFF" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" />
-<rect x="606" y="418" width="308" height="46" rx="12" fill="#FFFFFF"/>
-<text x="628" y="449" font-size="22" font-weight="700" fill="#16203A" text-anchor="start" >DOI</text>
-<circle cx="882" cy="441" r="15" fill="#2F8A5F"/>
-<path d="M875.2 441 l4.5 4.8 l8.2 -9.3" fill="none" stroke="#FFFFFF" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" />
-<text x="760" y="512" font-size="24" font-weight="400" fill="#2C3850" text-anchor="middle" >Every field compared</text>
-<rect x="1040" y="160" width="520" height="380" rx="28" fill="url(#leadGrad)" filter="url(#leadShadow)"/>
-<rect x="1040" y="160" width="520" height="380" rx="28" fill="url(#sheen)"/>
-<circle cx="1086" cy="206" r="19" fill="#E8960F"/>
-<text x="1086" y="215" font-size="24" font-weight="700" fill="#FFFFFF" text-anchor="middle" >3</text>
-<text x="1120" y="217" font-size="32" font-weight="700" fill="#FFFFFF" text-anchor="start" >Download automatically</text>
-<rect x="1101" y="256" width="68" height="88" rx="8" fill="#FFFFFF"/>
-<rect x="1101" y="256" width="68" height="20" rx="8" fill="#C9D7EE"/>
-<rect x="1101" y="268" width="68" height="8" fill="#C9D7EE"/>
-<path d="M1113 292h44" fill="none" stroke="#8EA3C7" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
-<path d="M1113 305h30" fill="none" stroke="#8EA3C7" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
-<path d="M1113 318h44" fill="none" stroke="#8EA3C7" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
-<path d="M1113 331h30" fill="none" stroke="#8EA3C7" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
-<rect x="1248" y="260" width="104" height="80" rx="10" fill="#0F1D3D" stroke="#7FE3EE" stroke-width="3"/>
-<path d="M1248 278 h104" stroke="#7FE3EE" stroke-width="3"/>
-<circle cx="1260" cy="269" r="3.4" fill="#7FE3EE"/>
-<circle cx="1271" cy="269" r="3.4" fill="#7FE3EE"/>
-<circle cx="1282" cy="269" r="3.4" fill="#7FE3EE"/>
-<path d="M0 0 L0 24 L6.5 18.5 L11 28 L15.5 26 L11 16.5 L19 16.5 Z" fill="#7FE3EE" stroke="#0F1D3D" stroke-width="1.6" stroke-linejoin="round" transform="translate(1292 291)"/>
-<path d="M1431 256 h48 l20 20 v68 h-68z" fill="#FFFFFF"/>
-<path d="M1479 256 v20 h20" fill="#C9D7EE"/>
-<rect x="1421" y="286" width="50" height="24" rx="5" fill="#D64541"/>
-<text x="1446" y="304" font-size="17" font-weight="700" fill="#FFFFFF" text-anchor="middle" >PDF</text>
-<circle cx="1495" cy="334" r="17" fill="#2F8A5F"/>
-<path d="M1487.3 334 l5.1 5.4 l9.4 -10.5" fill="none" stroke="#FFFFFF" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" />
-<path d="M1181 300 L1225.2 300" fill="none" stroke="#E8960F" stroke-width="4.5"/>
-<path d="M1236 300 L1218 309 L1218 291Z" fill="#E8960F"/>
-<path d="M1364 300 L1402.2 300" fill="none" stroke="#E8960F" stroke-width="4.5"/>
-<path d="M1413 300 L1395 309 L1395 291Z" fill="#E8960F"/>
-<text x="1135" y="378" font-size="21" font-weight="700" fill="#E7EEFA" text-anchor="middle" >Publisher</text>
-<text x="1135" y="402" font-size="21" font-weight="700" fill="#E7EEFA" text-anchor="middle" >page</text>
-<text x="1300" y="378" font-size="21" font-weight="700" fill="#E7EEFA" text-anchor="middle" >Dedicated</text>
-<text x="1300" y="402" font-size="21" font-weight="700" fill="#E7EEFA" text-anchor="middle" >browser</text>
-<text x="1465" y="378" font-size="21" font-weight="700" fill="#E7EEFA" text-anchor="middle" >Verified</text>
-<text x="1465" y="402" font-size="21" font-weight="700" fill="#E7EEFA" text-anchor="middle" >PDF</text>
-<circle cx="1092" cy="445" r="11" fill="#E8960F"/>
-<path d="M1087 445 l3.3 3.5 l6.1 -6.8" fill="none" stroke="#FFFFFF" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" />
-<text x="1114" y="452" font-size="22" font-weight="700" fill="#FFFFFF" text-anchor="start" >Official publisher sources only</text>
-<circle cx="1092" cy="478" r="11" fill="#E8960F"/>
-<path d="M1087 478 l3.3 3.5 l6.1 -6.8" fill="none" stroke="#FFFFFF" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" />
-<text x="1114" y="485" font-size="22" font-weight="700" fill="#FFFFFF" text-anchor="start" >Opens protected publisher pages</text>
-<circle cx="1092" cy="511" r="11" fill="#E8960F"/>
-<path d="M1087 511 l3.3 3.5 l6.1 -6.8" fill="none" stroke="#FFFFFF" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" />
-<text x="1114" y="518" font-size="22" font-weight="700" fill="#FFFFFF" text-anchor="start" >Every PDF identity-checked</text>
-<path d="M487 350 L539.8 350" fill="none" stroke="#2E3A55" stroke-width="5.5"/>
-<path d="M553 350 L531 361 L531 339Z" fill="#2E3A55"/>
-<path d="M967 350 L1019.8 350" fill="none" stroke="#2E3A55" stroke-width="5.5"/>
-<path d="M1033 350 L1011 361 L1011 339Z" fill="#2E3A55"/>
-<path d="M260 547 L260 599.8" fill="none" stroke="#2E3A55" stroke-width="5.5"/>
-<path d="M260 613 L249 591 L271 591Z" fill="#2E3A55"/>
-<rect x="100" y="620" width="320" height="64" rx="32" fill="#FFFFFF" stroke="#C3CDDD" stroke-width="1.8" filter="url(#shadow)"/>
-<circle cx="134" cy="652.0" r="9" fill="#36579A"/>
-<text x="154" y="660" font-size="23" font-weight="700" fill="#16203A" text-anchor="start" >Candidates + sources</text>
-<path d="M760 547 L760 599.8" fill="none" stroke="#2E3A55" stroke-width="5.5"/>
-<path d="M760 613 L749 591 L771 591Z" fill="#2E3A55"/>
-<rect x="553" y="620" width="202" height="64" rx="32" fill="#FFFFFF" stroke="#C3CDDD" stroke-width="1.8" filter="url(#shadow)"/>
-<circle cx="587" cy="652.0" r="9" fill="#5A3CC2"/>
-<text x="607" y="660" font-size="21" font-weight="700" fill="#16203A" text-anchor="start" >Match report</text>
-<rect x="765" y="620" width="202" height="64" rx="32" fill="#FFFFFF" stroke="#C3CDDD" stroke-width="1.8" filter="url(#shadow)"/>
-<circle cx="799" cy="652.0" r="9" fill="#5A3CC2"/>
-<text x="819" y="660" font-size="21" font-weight="700" fill="#16203A" text-anchor="start" >RIS / BibTeX</text>
-<path d="M1300 547 L1300 599.8" fill="none" stroke="#2E3A55" stroke-width="5.5"/>
-<path d="M1300 613 L1289 591 L1311 591Z" fill="#2E3A55"/>
-<rect x="1044" y="620" width="248" height="64" rx="32" fill="#FFFFFF" stroke="#C3CDDD" stroke-width="1.8" filter="url(#shadow)"/>
-<circle cx="1078" cy="652.0" r="9" fill="#2F8A5F"/>
-<text x="1098" y="660" font-size="23" font-weight="700" fill="#16203A" text-anchor="start" >Checked PDFs</text>
-<rect x="1308" y="620" width="248" height="64" rx="32" fill="#FFF3DC" stroke="#E8960F" stroke-width="2.4" filter="url(#shadow)"/>
-<circle cx="1342" cy="652.0" r="9" fill="#E8960F"/>
-<text x="1362" y="660" font-size="23" font-weight="700" fill="#A9650A" text-anchor="start" >Needs attention</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="590" viewBox="0 0 1600 590" font-family="Helvetica Neue,Helvetica,Arial,sans-serif" role="img" aria-labelledby="t d">
+<title id="t">ScholarFetch overview</title>
+<desc id="d">(a) Candidates from six databases, with metadata checked. (b) Each PDF is downloaded from the publisher in a dedicated browser using your own institutional access, then identity-checked. (c) Outputs: verified PDFs, RIS or BibTeX records, a follow-up list; you decide what to cite.</desc>
+<defs><linearGradient id="browser" x1="0" y1="0" x2="1" y2="1">
+  <stop offset="0" stop-color="#174E66"/><stop offset="1" stop-color="#24718D"/></linearGradient></defs><rect width="1600" height="590" fill="#fff"/>
+<text x="40" y="62" font-size="44" font-weight="700" fill="#111" text-anchor="start">a</text>
+<text x="84" y="60" font-size="32" font-weight="600" fill="#1F2933" text-anchor="start">Find and check</text>
+<rect x="50" y="94" width="150" height="56" rx="6" fill="#fff" stroke="#3F4A56" stroke-width="2"/>
+<text x="125" y="130" font-size="22" font-weight="400" fill="#333" text-anchor="middle">Topic</text>
+<rect x="210" y="94" width="150" height="56" rx="6" fill="#fff" stroke="#3F4A56" stroke-width="2"/>
+<text x="285" y="130" font-size="22" font-weight="400" fill="#333" text-anchor="middle">References</text>
+<rect x="370" y="94" width="150" height="56" rx="6" fill="#fff" stroke="#3F4A56" stroke-width="2"/>
+<text x="445" y="130" font-size="22" font-weight="400" fill="#333" text-anchor="middle">DOI / link</text>
+<path d="M125 150V170M285 150V170M445 150V170M125 170H445" stroke="#3F4A56" stroke-width="2" fill="none"/>
+<path d="M285 170 L285.0 187.6" stroke="#3F4A56" stroke-width="2.4" fill="none"/>
+<path d="M285 196 L278.0 182.0 L292.0 182.0Z" fill="#3F4A56"/>
+<rect x="50" y="198" width="470" height="256" rx="10" fill="#F7F7F7" stroke="#3F4A56" stroke-width="2"/>
+<text x="74" y="242" font-size="28" font-weight="600" fill="#1F2933" text-anchor="start">Search 6 databases</text>
+<text x="74" y="284" font-size="22" font-weight="400" fill="#444" text-anchor="start">Crossref</text>
+<text x="310" y="284" font-size="22" font-weight="400" fill="#444" text-anchor="start">OpenAlex</text>
+<text x="74" y="320" font-size="22" font-weight="400" fill="#444" text-anchor="start">PubMed</text>
+<text x="310" y="320" font-size="22" font-weight="400" fill="#444" text-anchor="start">Europe PMC</text>
+<text x="74" y="356" font-size="22" font-weight="400" fill="#444" text-anchor="start">Semantic Scholar</text>
+<text x="310" y="356" font-size="22" font-weight="400" fill="#444" text-anchor="start">arXiv</text>
+<path d="M50 394H520" stroke="#D0D5DD" stroke-width="1.6"/>
+<circle cx="86" cy="424" r="14" fill="#2E7D5B"/>
+<path d="M79 424l5 5 9-10" stroke="#fff" stroke-width="3" fill="none"/>
+<text x="112" y="432" font-size="22" font-weight="400" fill="#444" text-anchor="start">Title, authors, year, DOI checked</text>
+<path d="M520 326 L619.6 326.0" stroke="#3F4A56" stroke-width="2.4" fill="none"/>
+<path d="M628 326 L614.0 333.0 L614.0 319.0Z" fill="#3F4A56"/>
+<text x="590" y="62" font-size="44" font-weight="700" fill="#111" text-anchor="start">b</text>
+<text x="634" y="60" font-size="32" font-weight="600" fill="#1F6F8B" text-anchor="start">Download from the publisher</text>
+<rect x="694" y="196" width="150" height="190" rx="5" fill="#fff" stroke="#9A9A9A" stroke-width="1.6"/>
+<rect x="694" y="196" width="150" height="26" rx="5" fill="#D5E3D5"/>
+<rect x="670" y="216" width="150" height="190" rx="5" fill="#fff" stroke="#9A9A9A" stroke-width="1.6"/>
+<rect x="670" y="216" width="150" height="26" rx="5" fill="#E3D5C5"/>
+<rect x="646" y="236" width="150" height="190" rx="5" fill="#fff" stroke="#9A9A9A" stroke-width="1.6"/>
+<rect x="646" y="236" width="150" height="26" rx="5" fill="#C9D6DF"/>
+<rect x="660" y="278" width="96" height="7" rx="3.5" fill="#D6D6D6"/>
+<rect x="660" y="295" width="110" height="7" rx="3.5" fill="#D6D6D6"/>
+<rect x="660" y="312" width="78" height="7" rx="3.5" fill="#D6D6D6"/>
+<rect x="660" y="329" width="104" height="7" rx="3.5" fill="#D6D6D6"/>
+<rect x="820" y="168" width="420" height="284" rx="12" fill="url(#browser)"/>
+<rect x="820" y="168" width="420" height="44" rx="12" fill="#123E52"/>
+<rect x="820" y="198" width="420" height="14" fill="#123E52"/>
+<circle cx="842" cy="190" r="5.5" fill="#7FA9BC"/>
+<circle cx="861" cy="190" r="5.5" fill="#7FA9BC"/>
+<circle cx="880" cy="190" r="5.5" fill="#7FA9BC"/>
+<rect x="902" y="179" width="320" height="22" rx="11" fill="#1B5874" stroke="#2D6E8A"/>
+<text x="846" y="262" font-size="30" font-weight="700" fill="#FFFFFF" text-anchor="start">Dedicated browser</text>
+<circle cx="860" cy="310" r="15" fill="#FFFFFF"/>
+<text x="860" y="317" font-size="19" font-weight="700" fill="#174E66" text-anchor="middle">1</text>
+<text x="888" y="318" font-size="24" font-weight="400" fill="#E8F1F5" text-anchor="start">Reaches the article page</text>
+<circle cx="860" cy="356" r="15" fill="#FFFFFF"/>
+<text x="860" y="363" font-size="19" font-weight="700" fill="#174E66" text-anchor="middle">2</text>
+<text x="888" y="364" font-size="24" font-weight="400" fill="#E8F1F5" text-anchor="start">Finds the PDF link</text>
+<circle cx="860" cy="402" r="15" fill="#FFFFFF"/>
+<text x="860" y="409" font-size="19" font-weight="700" fill="#174E66" text-anchor="middle">3</text>
+<text x="888" y="410" font-size="24" font-weight="400" fill="#E8F1F5" text-anchor="start">Saves the PDF</text>
+<rect x="844" y="122" width="372" height="52" rx="26" fill="#FDF3E7" stroke="#C07A2C" stroke-width="2.2"/>
+<circle cx="876" cy="148" r="9" fill="none" stroke="#C07A2C" stroke-width="3.2"/>
+<path d="M885 148H908M900 148V158M906 148V156" stroke="#C07A2C" stroke-width="3.2" fill="none"/>
+<text x="920" y="156" font-size="24" font-weight="600" fill="#8A5317" text-anchor="start">Your institutional access</text>
+<path d="M960 454 L960.0 463.6" stroke="#1F6F8B" stroke-width="2.4" fill="none"/>
+<path d="M960 472 L953.0 458.0 L967.0 458.0Z" fill="#1F6F8B"/>
+<path d="M930 474H982L1002 494V566H930Z" fill="#fff" stroke="#3F4A56" stroke-width="2"/>
+<path d="M982 474V494H1002" fill="none" stroke="#3F4A56" stroke-width="2"/>
+<rect x="920" y="512" width="58" height="28" rx="3" fill="#1F6F8B"/>
+<text x="949" y="533" font-size="19" font-weight="700" fill="#fff" text-anchor="middle">PDF</text>
+<circle cx="1002" cy="562" r="17" fill="#2E7D5B"/>
+<path d="M993 562l7 7 12-14" stroke="#fff" stroke-width="3.2" fill="none"/>
+<text x="1030" y="536" font-size="24" font-weight="600" fill="#1F2933" text-anchor="start">Identity checked</text>
+<path d="M570 96V560M1272 96V560" stroke="#E6E6E6" stroke-width="1.5"/>
+<text x="1300" y="62" font-size="44" font-weight="700" fill="#111" text-anchor="start">c</text>
+<text x="1344" y="60" font-size="32" font-weight="600" fill="#1F2933" text-anchor="start">Outputs</text>
+<path d="M1302 110H1326L1338 122V154H1302Z" fill="#fff" stroke="#3F4A56" stroke-width="2"/>
+<text x="1356" y="142" font-size="26" font-weight="600" fill="#1F2933" text-anchor="start">Verified PDFs</text>
+<path d="M1302 196H1336M1302 208H1336M1302 220H1326M1302 232H1332" stroke="#3F4A56" stroke-width="2.6"/>
+<text x="1356" y="222" font-size="26" font-weight="600" fill="#1F2933" text-anchor="start">Records</text>
+<text x="1356" y="254" font-size="22" font-weight="400" fill="#555" text-anchor="start">RIS / BibTeX</text>
+<path d="M1305 292V338M1305 294H1334L1326 305L1334 316H1305" fill="none" stroke="#888" stroke-width="2.4"/>
+<text x="1356" y="320" font-size="26" font-weight="600" fill="#1F2933" text-anchor="start">Follow-up list</text>
+<rect x="1300" y="380" width="270" height="110" rx="12" fill="#FDF3E7" stroke="#C07A2C" stroke-width="2"/>
+<circle cx="1334" cy="418" r="11" fill="#C07A2C"/>
+<rect x="1317" y="432" width="34" height="22" rx="10" fill="#C07A2C"/>
+<text x="1370" y="428" font-size="26" font-weight="700" fill="#8A5317" text-anchor="start">You decide</text>
+<text x="1370" y="462" font-size="26" font-weight="400" fill="#8A5317" text-anchor="start">what to cite</text>
 </svg>

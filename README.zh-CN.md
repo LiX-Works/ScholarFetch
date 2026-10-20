@@ -13,7 +13,7 @@
 > [!NOTE]
 > **Human-in-the-Loop.** 这个 Skill 承担重复性的科研事务，是辅助研究，而不是替代研究。问题、判断和结论留给人，每个结果使用前都要检查。
 
-<img src="assets/overview.png" alt="可以从研究主题、文献列表或 DOI/链接开始。ScholarFetch 检索六个学术数据库并去重，逐字段核对元数据，通过专用浏览器从官方出版社下载 PDF 并核对其身份。产出包括带来源的候选列表、匹配报告、RIS/BibTeX 导出、通过检查的 PDF 和待处理项目。" width="1600">
+<img src="assets/overview.png" alt="ScholarFetch 检索学术数据库并核对元数据，通过专用浏览器使用你的机构访问权限下载出版社 PDF，由你决定引用哪些文献。" width="1600">
 
 ## 入口
 
