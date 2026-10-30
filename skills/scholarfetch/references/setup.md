@@ -2,7 +2,7 @@
 
 ## Install the base functionality
 
-Python 3.11 or later is required. Install from the downloaded repository's root using a separate Python environment:
+Python 3.11 or later is required. Install from this Skill's folder (`skills/scholarfetch/` in the repository) using a separate Python environment:
 
 ```bash
 python -m pip install .
@@ -17,7 +17,7 @@ Batch input can use JSON, CSV, or text. RIS/BibTeX input currently extracts DOI-
 
 ## Install as an Agent Skill
 
-Place the complete repository in a skill directory supported by your Agent, using the folder name `scholarfetch`. Keep `SKILL.md`, `scripts/`, `src/`, `references/`, and the license files.
+Copy the complete `skills/scholarfetch/` folder into a skill directory supported by your Agent, using the folder name `scholarfetch`. Keep `SKILL.md`, `scripts/`, `src/`, `references/`, and the license files.
 
 The usual Codex location is `~/.codex/skills/scholarfetch/`. If a custom skill directory is configured, follow that configuration. After installing the Python dependencies from the Skill root, invoke it with `$scholarfetch`. Installing the Python package and placing the Skill are separate steps; package installation alone does not automatically register an Agent Skill or MCP server.
 

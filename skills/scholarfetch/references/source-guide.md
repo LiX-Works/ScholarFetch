@@ -4,7 +4,7 @@
 
 This package reuses the source adapters, filtering, ranking, field comparison, and optional graph modules from nature-academic-search 0.3.1.
 The unified interface adds source coverage records, conservative identity resolution, version preservation, and conflict isolation. See
-`THIRD_PARTY_NOTICES.md` and `LICENSES/nature-academic-search-MIT.txt` at the release root for MIT attribution.
+`THIRD_PARTY_NOTICES.md` and `LICENSES/nature-academic-search-MIT.txt` at the Skill root for MIT attribution.
 
 | Source | Use in this package | Identity lookup and limits |
 |---|---|---|
